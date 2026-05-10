@@ -4,6 +4,52 @@
 
 ---
 
+## 🔄 다음 세션 시작하기 (Last sync: 2026-05-11)
+
+### 다른 환경에서 이어 작업하려면
+
+```bash
+# 1. Private repo이므로 gh 인증 필요
+gh auth login
+
+# 2. 클론
+gh repo clone scappyJr/ai-devseed
+cd ai-devseed
+
+# 3. 의존성 설치
+cd packages/cli && npm install && cd ../..
+
+# 4. 작업 브랜치로 전환 (develop이 통합 브랜치)
+git checkout develop
+
+# 5. Claude Code 시작
+claude
+# 첫 메시지: "@HANDOFF-aidevseed.md 읽어줘"
+```
+
+### 어디까지 했고 다음에 뭐 할지
+
+**완료** (2026-05-11 세션):
+- GitHub Private 저장소 생성: https://github.com/scappyJr/ai-devseed
+- main + develop 브랜치 push
+- 라벨 20개 (`bash .github/setup-labels.sh` 결과)
+- Topics 14개, Description, Homepage 설정
+- `.gitignore` 추가, `git config user.name/user.email` 설정
+
+**다음 액션** (우선순위 순):
+1. 베타 사용자 1-2명에게 Private 상태로 공유 (Settings → Collaborators) → 피드백
+2. README 데모 GIF 또는 스크린샷 추가 (선택)
+3. **Public 전환** (Settings → General → Change visibility)
+4. npm 계정 + 2FA → `npm publish --tag beta`
+5. Reddit/Disquiet 출시 글
+
+### 주의사항
+
+- ⚠️ 로컬 Claude 메모리(`~/.claude/projects/.../memory/`)는 다른 환경에 동기화 안 됨. 필요하면 새 환경에서 다시 컨텍스트 알려주기 (이 문서가 그 역할 일부).
+- ⚠️ npm publish와 Reddit 출시는 **Public 전환 후**에만 진행.
+
+---
+
 ## 📌 프로젝트 한 줄 요약
 
 **AI DevSeed** - AI(Claude Code 등)와 함께하는 1인 개발을 위한 프로젝트 시작 키트 CLI
@@ -49,10 +95,11 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [x] 출시 가이드 (GitHub, npm publish, Reddit)
 
 ### 다음 단계
-- [ ] GitHub 저장소 생성 (Public!)
-- [ ] 로컬 → GitHub 푸시
-- [ ] About 섹션 + Topics 채우기
-- [ ] 라벨 자동 생성 (`bash .github/setup-labels.sh`)
+- [x] GitHub 저장소 생성 (Private로 시작 — 가이드 원본은 Public이지만 검토 버퍼 위해 Private 선택)
+- [x] 로컬 → GitHub 푸시 (main + develop)
+- [x] About 섹션 + Topics 14개 채우기
+- [x] 라벨 자동 생성 (20개)
+- [ ] **Public 전환** (npm/Reddit 출시 게이트)
 - [ ] npm 계정 만들기 + 2FA
 - [ ] `npm publish --tag beta` (베타 출시)
 - [ ] Reddit/Disquiet에 출시 글
@@ -187,5 +234,5 @@ docs/reddit-launch-templates.md를 봐. r/SideProject용 글 다듬어줘.
 
 ---
 
-*이 문서는 2026-04-29 작성*
+*이 문서는 2026-04-29 작성, 2026-05-11 GitHub 셋업 결과 반영하여 업데이트*
 *Original 대화 내역은 Claude.ai 웹의 "Otori → AI DevSeed" 대화에 보관됨*
