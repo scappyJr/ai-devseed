@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(git:*)",
+      "Read(*)",
+      "Write(src/**)",
+      "Write(docs/**)",
+      "Write(tests/**)",
+      "Write(.claude/**)",
+      "Write(CHANGELOG.md)",
+      "Write(README.md)",
+      "Write(CLAUDE.md)",
+      "Edit(src/**)",
+      "Edit(docs/**)",
+      "Edit(tests/**)"
+    ],
+    "deny": [
+      "Write(.env)",
+      "Write(.env.*)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Write(node_modules/**)",
+      "Write(.git/**)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)"
+    ]
+  }
+}
