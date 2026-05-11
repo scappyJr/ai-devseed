@@ -12,6 +12,7 @@ All notable changes to AI DevSeed.
   - `/handoff` — generate or update `HANDOFF.md` for next-session pickup
   - `/retro` — weekly retrospective in `docs/retrospective/`
 - `docs/retrospective/_template.md` and the matching folder, so the retro workflow has a concrete starting point.
+- **`web-react` template** is no longer a placeholder. It now overlays a React 18 + Vite + TypeScript flavored `CLAUDE.md` plus a `/new-page` slash command for scaffolding pages under `src/pages/`, matching the `mobile-rn` template's depth.
 
 ### Changed
 - Root README and template README updated to list the expanded command set (free tier now advertises 6 base commands).
