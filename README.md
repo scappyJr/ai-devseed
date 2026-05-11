@@ -14,6 +14,10 @@ npx ai-devseed init my-app
 
 That's it. Your project is ready in 30 seconds. ✨
 
+<p align="center">
+  <img src="docs/images/demo.png" alt="AI DevSeed CLI: interactive prompts and success output" width="720">
+</p>
+
 ---
 
 ## 🤔 Why AI DevSeed?
