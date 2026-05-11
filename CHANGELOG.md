@@ -13,10 +13,13 @@ All notable changes to AI DevSeed.
   - `/retro` — weekly retrospective in `docs/retrospective/`
 - `docs/retrospective/_template.md` and the matching folder, so the retro workflow has a concrete starting point.
 - **`web-react` template** is no longer a placeholder. It now overlays a React 18 + Vite + TypeScript flavored `CLAUDE.md` plus a `/new-page` slash command for scaffolding pages under `src/pages/`, matching the `mobile-rn` template's depth.
+- **2 more slash commands** in the base template:
+  - `/explore` — map an unfamiliar area of the codebase before editing (read-only context scan)
+  - `/test-plan` — design test coverage in a prioritized checklist before writing tests
 
 ### Changed
-- Root README and template README updated to list the expanded command set (free tier now advertises 6 base commands).
-- CLI success message (`init`) prints all six commands so users discover them right after bootstrap.
+- Root README and template README updated to list the expanded command set (free tier now advertises 8 base commands).
+- CLI success message (`init`) prints all eight commands so users discover them right after bootstrap.
 
 ---
 
