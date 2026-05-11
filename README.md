@@ -63,7 +63,7 @@ my-app/
 
 ### 🤖 AI-Ready Configurations
 - **CLAUDE.md** template with project context structure
-- **Custom slash commands**: `/daily`, `/idea`, `/add-decision`, `/handoff`, `/retro`, `/review` (+ `/new-screen` for mobile)
+- **Custom slash commands**: `/daily`, `/idea`, `/add-decision`, `/handoff`, `/retro`, `/review`, `/explore`, `/test-plan` (+ `/new-screen` for mobile, `/new-page` for web)
 - **Permission settings** to keep your `.env` safe
 - **Single source of truth** philosophy baked in
 
@@ -139,7 +139,7 @@ claude
 | Folder structure | ✅ | ✅ |
 | CLAUDE.md template | ✅ | ✅ |
 | Basic ADR templates | ✅ | ✅ |
-| 6 essential slash commands | ✅ | ✅ |
+| 8 essential slash commands | ✅ | ✅ |
 | GitHub setup guide | ✅ | ✅ |
 | Markdown WBS | ✅ | ✅ |
 | **Pro Features** | | |

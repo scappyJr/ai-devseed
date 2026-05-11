@@ -37,7 +37,8 @@ claude
 후속(오후, CLI 가다듬기) 세션 — PR 흐름 정착:
 - **PR #1** (→ main, 머지됨): hero 데모 스크린샷(`docs/images/demo.png`) + `github.com/example/...` placeholder URL 6곳 수정 (CLI 코드 + base 템플릿 3개 파일)
 - **PR #2** (→ develop, 머지됨): free tier 슬래시 명령 3개 추가 (`/idea`, `/handoff`, `/retro`) + `docs/retrospective/_template.md` + 루트/템플릿 README · CLI success message · workflow-guide 동기화
-- **PR #3** (→ develop, **머지 대기 중**): `web-react` 템플릿 placeholder → 실제 overlay (`CLAUDE.md` + `/new-page` 명령). 브랜치: `feature/web-react-template`
+- **PR #3** (→ develop, 머지됨): `web-react` 템플릿 placeholder → 실제 overlay (`CLAUDE.md` + `/new-page` 명령). 브랜치 `feature/web-react-template`은 머지와 함께 삭제됨.
+- **PR #4** (→ develop, **머지 대기 중**): free tier 슬래시 명령 2개 추가 (`/explore`, `/test-plan`) + 루트/템플릿 README · CLI success message · CHANGELOG 동기화. 브랜치: `feature/explore-test-plan-commands`
 
 기타:
 - 글로벌 `git config` 설정 완료 (`scappyJr` / `hwkim@mammothsoft.co.kr`) — 외부 디렉터리에서도 git init/commit OK
@@ -45,15 +46,12 @@ claude
 
 **다음 액션** (우선순위 순):
 
-1. **PR #3 머지** — https://github.com/scappyJr/ai-devseed/pull/new/feature/web-react-template (base를 꼭 `develop`으로). 머지 후 정리:
+1. **PR #4 머지** — https://github.com/scappyJr/ai-devseed/pull/4 (base는 `develop`). `gh pr merge 4 --merge --delete-branch` 또는 웹에서 머지 후:
    ```powershell
    git checkout develop
    git pull origin develop
-   git branch -d feature/web-react-template
-   # 원격 브랜치는 GitHub 웹에서 "Delete branch" 또는: git push origin --delete feature/web-react-template
    ```
-2. **(선택) 더 기능 추가** — 사용자가 Public 전환 전 product 보강 의도. 후보:
-   - 새 슬래시 명령 (예: `/explore`, `/test-plan`)
+2. **(선택) 더 기능 추가** — 남은 후보:
    - 새 템플릿 (예: Node.js CLI 라이브러리, fullstack)
    - 데모 GIF (현재 정적 PNG → 애니메이션)
    - CLI 에러 메시지 개선
@@ -66,7 +64,7 @@ claude
 
 - ⚠️ 로컬 Claude 메모리(`~/.claude/projects/.../memory/`)는 다른 환경에 동기화 안 됨. 새 환경에선 이 문서가 핵심 컨텍스트.
 - ⚠️ npm publish와 Reddit 출시는 **Public 전환 후**에만 진행.
-- ⚠️ **`gh` CLI 인증 안 됨** (현재 환경). PR 생성은 `git push -u` 후 출력되는 `https://github.com/scappyJr/ai-devseed/pull/new/<branch>` URL을 통해 웹에서. 인증 시도하려면: `! "C:\Program Files\GitHub CLI\gh.exe" auth login`.
+- ℹ️ `gh` CLI 인증 완료 (`scappyJr`, scopes: `gist`, `read:org`, `repo`). PR 생성·머지·브랜치 삭제 모두 CLI에서 가능.
 - ⚠️ **PR 생성 시 base 브랜치 주의** — GitHub 기본은 `main`. CLAUDE.md 흐름(`feature/* → develop`)을 따르려면 PR 만들 때 base를 **develop으로 명시 변경**. (PR #1은 실수로 main에 머지된 이력 있음.)
 - ⚠️ 루트 `package-lock.json` 재발 주의 — npm 명령은 항상 `packages/cli/` 안에서. 루트에서 잘못 돌리면 빈 lockfile 생김 (그땐 그냥 `rm package-lock.json`).
 - ℹ️ `packages/cli/package-lock.json`은 tracked. 새 환경 셋업: `cd packages/cli && npm install` 필수.
@@ -125,8 +123,9 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [x] README hero 데모 스크린샷 (PR #1)
 - [x] `github.com/example/...` placeholder URL 6곳 수정 (PR #1)
 - [x] Free tier 슬래시 명령 6개로 확장 (PR #2 — `/idea`, `/handoff`, `/retro` 추가)
-- [x] web-react 템플릿 실 overlay (PR #3, **머지 대기**)
-- [ ] PR #3 머지 + develop sync
+- [x] web-react 템플릿 실 overlay (PR #3, 머지됨)
+- [x] Free tier 슬래시 명령 8개로 확장 (PR #4, **머지 대기** — `/explore`, `/test-plan` 추가)
+- [ ] PR #4 머지 + develop sync
 - [ ] (선택) 더 기능 추가 — Public 전환 전 product 보강
 - [ ] `develop` → `main` 머지 (release moment)
 - [ ] **Public 전환** (npm/Reddit 출시 게이트)
@@ -145,7 +144,7 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 
 ### 무료 (Free Tier) - 현재
 - 모든 기본 템플릿 (base + mobile-rn overlay + web-react overlay)
-- 핵심 슬래시 명령 6개 (`/daily`, `/idea`, `/add-decision`, `/handoff`, `/retro`, `/review`) + 템플릿별 1개씩 (`/new-screen`, `/new-page`)
+- 핵심 슬래시 명령 8개 (`/daily`, `/idea`, `/add-decision`, `/handoff`, `/retro`, `/review`, `/explore`, `/test-plan`) + 템플릿별 1개씩 (`/new-screen`, `/new-page`)
 - 문서/워크플로우 셋업
 
 ### 유료 (Pro Tier - $29) - 추후 구현
