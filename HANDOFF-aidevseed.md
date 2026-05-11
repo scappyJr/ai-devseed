@@ -38,7 +38,8 @@ claude
 - **PR #1** (→ main, 머지됨): hero 데모 스크린샷(`docs/images/demo.png`) + `github.com/example/...` placeholder URL 6곳 수정 (CLI 코드 + base 템플릿 3개 파일)
 - **PR #2** (→ develop, 머지됨): free tier 슬래시 명령 3개 추가 (`/idea`, `/handoff`, `/retro`) + `docs/retrospective/_template.md` + 루트/템플릿 README · CLI success message · workflow-guide 동기화
 - **PR #3** (→ develop, 머지됨): `web-react` 템플릿 placeholder → 실제 overlay (`CLAUDE.md` + `/new-page` 명령). 브랜치 `feature/web-react-template`은 머지와 함께 삭제됨.
-- **PR #4** (→ develop, **머지 대기 중**): free tier 슬래시 명령 2개 추가 (`/explore`, `/test-plan`) + 루트/템플릿 README · CLI success message · CHANGELOG 동기화. 브랜치: `feature/explore-test-plan-commands`
+- **PR #4** (→ develop, 머지됨): free tier 슬래시 명령 2개 추가 (`/explore`, `/test-plan`) + 루트/템플릿 README · CLI success message · CHANGELOG 동기화. 브랜치는 머지와 함께 삭제됨.
+- **PR #5** (→ main, 머지됨): release merge — PR #2/#3/#4 누적분(8 커밋, +468/-26)을 main으로 반영. develop은 통합 브랜치라 보존. `package.json` 버전은 `0.1.0-beta.1` 그대로 (npm publish 시점에 bump).
 
 기타:
 - 글로벌 `git config` 설정 완료 (`scappyJr` / `hwkim@mammothsoft.co.kr`) — 외부 디렉터리에서도 git init/commit OK
@@ -46,19 +47,13 @@ claude
 
 **다음 액션** (우선순위 순):
 
-1. **PR #4 머지** — https://github.com/scappyJr/ai-devseed/pull/4 (base는 `develop`). `gh pr merge 4 --merge --delete-branch` 또는 웹에서 머지 후:
-   ```powershell
-   git checkout develop
-   git pull origin develop
-   ```
-2. **(선택) 더 기능 추가** — 남은 후보:
+1. **Public 전환** — `gh repo edit scappyJr/ai-devseed --visibility public --accept-visibility-change-consequences` 또는 GitHub Settings → General → Change visibility. **npm/Reddit 출시 게이트**.
+2. **(선택) 더 기능 추가** — Public 전환 전이든 후든 후보:
    - 새 템플릿 (예: Node.js CLI 라이브러리, fullstack)
    - 데모 GIF (현재 정적 PNG → 애니메이션)
    - CLI 에러 메시지 개선
-3. `develop` → `main` 머지 (release moment) — 누적 신기능 main 반영
-4. **Public 전환** (Settings → General → Change visibility)
-5. npm 계정 + 2FA → `npm publish --tag beta`
-6. Reddit/Disquiet 출시 글
+3. **npm publish 준비** — `packages/cli/package.json` 버전 bump (`0.1.0-beta.1` → 다음), `CHANGELOG.md` [Unreleased] → 버전 섹션으로 이동, npm 계정 + 2FA → `cd packages/cli && npm publish --tag beta`
+4. Reddit/Disquiet 출시 글
 
 ### 주의사항
 
@@ -124,10 +119,9 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [x] `github.com/example/...` placeholder URL 6곳 수정 (PR #1)
 - [x] Free tier 슬래시 명령 6개로 확장 (PR #2 — `/idea`, `/handoff`, `/retro` 추가)
 - [x] web-react 템플릿 실 overlay (PR #3, 머지됨)
-- [x] Free tier 슬래시 명령 8개로 확장 (PR #4, **머지 대기** — `/explore`, `/test-plan` 추가)
-- [ ] PR #4 머지 + develop sync
+- [x] Free tier 슬래시 명령 8개로 확장 (PR #4 — `/explore`, `/test-plan` 추가)
+- [x] `develop` → `main` release merge (PR #5)
 - [ ] (선택) 더 기능 추가 — Public 전환 전 product 보강
-- [ ] `develop` → `main` 머지 (release moment)
 - [ ] **Public 전환** (npm/Reddit 출시 게이트)
 - [ ] npm 계정 만들기 + 2FA
 - [ ] `npm publish --tag beta` (베타 출시)
