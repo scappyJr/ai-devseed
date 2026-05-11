@@ -21,7 +21,7 @@
 
 ## 📋 Status
 
-- [x] Project setup with [AI DevSeed](https://github.com/example/ai-devseed)
+- [x] Project setup with [AI DevSeed](https://github.com/scappyJr/ai-devseed)
 - [ ] Phase 0: Environment setup
 - [ ] Phase 1: MVP
 - [ ] Phase 2: Enhancement
@@ -85,4 +85,4 @@ See [`docs/workflow-guide.md`](docs/workflow-guide.md) for the daily workflow.
 
 ---
 
-*Bootstrapped with [🌱 AI DevSeed](https://github.com/example/ai-devseed)*
+*Bootstrapped with [🌱 AI DevSeed](https://github.com/scappyJr/ai-devseed)*

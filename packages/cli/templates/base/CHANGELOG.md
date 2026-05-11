@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### 🌱 Initial Setup ({{DATE}})
-- Project bootstrapped with [AI DevSeed](https://github.com/example/ai-devseed)
+- Project bootstrapped with [AI DevSeed](https://github.com/scappyJr/ai-devseed)
 - Folder structure and core documentation initialized
 - Claude Code configured
 
