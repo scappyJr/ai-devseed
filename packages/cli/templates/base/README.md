@@ -73,7 +73,10 @@ This project uses [Claude Code](https://www.anthropic.com/claude-code) for AI-as
 # Useful commands
 /daily start           # Start your day
 /daily end             # Wrap up
-/add-decision          # Document an ADR
+/idea                  # Capture a fleeting idea to inbox
+/add-decision          # Document an ADR (decision)
+/handoff               # Generate session-pickup doc
+/retro                 # Weekly retrospective
 /review                # Self code review
 ```
 
