@@ -62,8 +62,9 @@ ADR/Issue  inbox.md
 
 ### Weekend (30 min)
 1. Review WBS progress (planned vs actual)
-2. Process `docs/ideas/inbox.md`
-3. Plan top 3 priorities for next week
+2. Process `docs/ideas/inbox.md` (captured via `/idea` during the week)
+3. `/retro` to generate a weekly retro in `docs/retrospective/`
+4. Plan top 3 priorities for next week
 
 ---
 

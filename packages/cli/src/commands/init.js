@@ -212,8 +212,13 @@ function printSuccessMessage(config) {
 
   console.log('\n' + chalk.bold('📚 Useful commands:\n'));
   console.log(`  ${chalk.cyan('/daily start')}      ${chalk.gray('# Start your day')}`);
-  console.log(`  ${chalk.cyan('/add-decision')}     ${chalk.gray('# Document a decision')}`);
+  console.log(`  ${chalk.cyan('/idea')}             ${chalk.gray('# Capture an idea (30s)')}`);
+  console.log(`  ${chalk.cyan('/add-decision')}     ${chalk.gray('# Document a decision (ADR)')}`);
+  console.log(`  ${chalk.cyan('/handoff')}          ${chalk.gray('# Session pickup doc')}`);
+  console.log(`  ${chalk.cyan('/retro')}            ${chalk.gray('# Weekly retrospective')}`);
   console.log(`  ${chalk.cyan('/review')}           ${chalk.gray('# Self code review')}`);
+  console.log(`  ${chalk.cyan('/explore')}          ${chalk.gray('# Map an area before editing')}`);
+  console.log(`  ${chalk.cyan('/test-plan')}        ${chalk.gray('# Plan tests before writing them')}`);
 
   console.log('\n' + chalk.bold('💡 Read first:\n'));
   console.log(`  ${chalk.cyan('CLAUDE.md')}                  ${chalk.gray('# Project context for AI')}`);
