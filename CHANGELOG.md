@@ -4,6 +4,25 @@ All notable changes to AI DevSeed.
 
 ---
 
+## [Unreleased]
+
+### Added
+- **3 new slash commands** in the base template free tier:
+  - `/idea` — zero-friction idea capture to `docs/ideas/inbox.md`
+  - `/handoff` — generate or update `HANDOFF.md` for next-session pickup
+  - `/retro` — weekly retrospective in `docs/retrospective/`
+- `docs/retrospective/_template.md` and the matching folder, so the retro workflow has a concrete starting point.
+- **`web-react` template** is no longer a placeholder. It now overlays a React 18 + Vite + TypeScript flavored `CLAUDE.md` plus a `/new-page` slash command for scaffolding pages under `src/pages/`, matching the `mobile-rn` template's depth.
+- **2 more slash commands** in the base template:
+  - `/explore` — map an unfamiliar area of the codebase before editing (read-only context scan)
+  - `/test-plan` — design test coverage in a prioritized checklist before writing tests
+
+### Changed
+- Root README and template README updated to list the expanded command set (free tier now advertises 8 base commands).
+- CLI success message (`init`) prints all eight commands so users discover them right after bootstrap.
+
+---
+
 ## [0.1.0-beta.1] · 2026-04-29 (Beta Release) 🌱
 
 ### Initial Release
