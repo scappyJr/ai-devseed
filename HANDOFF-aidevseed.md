@@ -29,24 +29,48 @@ claude
 
 ### 어디까지 했고 다음에 뭐 할지
 
-**완료** (2026-05-11 세션):
-- GitHub Private 저장소 생성: https://github.com/scappyJr/ai-devseed
-- main + develop 브랜치 push
-- 라벨 20개 (`bash .github/setup-labels.sh` 결과)
-- Topics 14개, Description, Homepage 설정
-- `.gitignore` 추가, `git config user.name/user.email` 설정
+**완료** — 2026-05-11 GitHub 셋업 세션 + 같은 날 후속 CLI 가다듬기 세션:
+
+이전(오전, GitHub 셋업) 세션:
+- GitHub Private 저장소 + main/develop 브랜치 + Topics 14개 + 라벨 20개 + `.gitignore` + 로컬 `git config`
+
+후속(오후, CLI 가다듬기) 세션 — PR 흐름 정착:
+- **PR #1** (→ main, 머지됨): hero 데모 스크린샷(`docs/images/demo.png`) + `github.com/example/...` placeholder URL 6곳 수정 (CLI 코드 + base 템플릿 3개 파일)
+- **PR #2** (→ develop, 머지됨): free tier 슬래시 명령 3개 추가 (`/idea`, `/handoff`, `/retro`) + `docs/retrospective/_template.md` + 루트/템플릿 README · CLI success message · workflow-guide 동기화
+- **PR #3** (→ develop, **머지 대기 중**): `web-react` 템플릿 placeholder → 실제 overlay (`CLAUDE.md` + `/new-page` 명령). 브랜치: `feature/web-react-template`
+
+기타:
+- 글로벌 `git config` 설정 완료 (`scappyJr` / `hwkim@mammothsoft.co.kr`) — 외부 디렉터리에서도 git init/commit OK
+- 로컬 phantom `package-lock.json` 삭제 (루트 89-byte 빈 lockfile)
 
 **다음 액션** (우선순위 순):
-1. 베타 사용자 1-2명에게 Private 상태로 공유 (Settings → Collaborators) → 피드백
-2. README 데모 GIF 또는 스크린샷 추가 (선택)
-3. **Public 전환** (Settings → General → Change visibility)
-4. npm 계정 + 2FA → `npm publish --tag beta`
-5. Reddit/Disquiet 출시 글
+
+1. **PR #3 머지** — https://github.com/scappyJr/ai-devseed/pull/new/feature/web-react-template (base를 꼭 `develop`으로). 머지 후 정리:
+   ```powershell
+   git checkout develop
+   git pull origin develop
+   git branch -d feature/web-react-template
+   # 원격 브랜치는 GitHub 웹에서 "Delete branch" 또는: git push origin --delete feature/web-react-template
+   ```
+2. **(선택) 더 기능 추가** — 사용자가 Public 전환 전 product 보강 의도. 후보:
+   - 새 슬래시 명령 (예: `/explore`, `/test-plan`)
+   - 새 템플릿 (예: Node.js CLI 라이브러리, fullstack)
+   - 데모 GIF (현재 정적 PNG → 애니메이션)
+   - CLI 에러 메시지 개선
+3. `develop` → `main` 머지 (release moment) — 누적 신기능 main 반영
+4. **Public 전환** (Settings → General → Change visibility)
+5. npm 계정 + 2FA → `npm publish --tag beta`
+6. Reddit/Disquiet 출시 글
 
 ### 주의사항
 
-- ⚠️ 로컬 Claude 메모리(`~/.claude/projects/.../memory/`)는 다른 환경에 동기화 안 됨. 필요하면 새 환경에서 다시 컨텍스트 알려주기 (이 문서가 그 역할 일부).
+- ⚠️ 로컬 Claude 메모리(`~/.claude/projects/.../memory/`)는 다른 환경에 동기화 안 됨. 새 환경에선 이 문서가 핵심 컨텍스트.
 - ⚠️ npm publish와 Reddit 출시는 **Public 전환 후**에만 진행.
+- ⚠️ **`gh` CLI 인증 안 됨** (현재 환경). PR 생성은 `git push -u` 후 출력되는 `https://github.com/scappyJr/ai-devseed/pull/new/<branch>` URL을 통해 웹에서. 인증 시도하려면: `! "C:\Program Files\GitHub CLI\gh.exe" auth login`.
+- ⚠️ **PR 생성 시 base 브랜치 주의** — GitHub 기본은 `main`. CLAUDE.md 흐름(`feature/* → develop`)을 따르려면 PR 만들 때 base를 **develop으로 명시 변경**. (PR #1은 실수로 main에 머지된 이력 있음.)
+- ⚠️ 루트 `package-lock.json` 재발 주의 — npm 명령은 항상 `packages/cli/` 안에서. 루트에서 잘못 돌리면 빈 lockfile 생김 (그땐 그냥 `rm package-lock.json`).
+- ℹ️ `packages/cli/package-lock.json`은 tracked. 새 환경 셋업: `cd packages/cli && npm install` 필수.
+- ℹ️ **AI DevSeed 템플릿 = overlay 패턴**. `init.js`가 항상 `base/`를 복사한 뒤 선택 템플릿을 `overwrite: true`로 덮음. mobile-rn/web-react는 코드 스캐폴드가 아니라 `CLAUDE.md` + 플랫폼별 명령 1개를 덮는 **AI 컨텍스트 overlay**일 뿐. 새 템플릿 작업 scope 잡을 때 잊지 말 것.
 
 ---
 
@@ -95,10 +119,16 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [x] 출시 가이드 (GitHub, npm publish, Reddit)
 
 ### 다음 단계
-- [x] GitHub 저장소 생성 (Private로 시작 — 가이드 원본은 Public이지만 검토 버퍼 위해 Private 선택)
+- [x] GitHub 저장소 생성 (Private)
 - [x] 로컬 → GitHub 푸시 (main + develop)
-- [x] About 섹션 + Topics 14개 채우기
-- [x] 라벨 자동 생성 (20개)
+- [x] About + Topics + 라벨 셋업
+- [x] README hero 데모 스크린샷 (PR #1)
+- [x] `github.com/example/...` placeholder URL 6곳 수정 (PR #1)
+- [x] Free tier 슬래시 명령 6개로 확장 (PR #2 — `/idea`, `/handoff`, `/retro` 추가)
+- [x] web-react 템플릿 실 overlay (PR #3, **머지 대기**)
+- [ ] PR #3 머지 + develop sync
+- [ ] (선택) 더 기능 추가 — Public 전환 전 product 보강
+- [ ] `develop` → `main` 머지 (release moment)
 - [ ] **Public 전환** (npm/Reddit 출시 게이트)
 - [ ] npm 계정 만들기 + 2FA
 - [ ] `npm publish --tag beta` (베타 출시)
@@ -115,8 +145,8 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 **모델**: Freemium + 가이드북 (사용자 결정)
 
 ### 무료 (Free Tier) - 현재
-- 모든 기본 템플릿
-- 핵심 슬래시 명령 3개
+- 모든 기본 템플릿 (base + mobile-rn overlay + web-react overlay)
+- 핵심 슬래시 명령 6개 (`/daily`, `/idea`, `/add-decision`, `/handoff`, `/retro`, `/review`) + 템플릿별 1개씩 (`/new-screen`, `/new-page`)
 - 문서/워크플로우 셋업
 
 ### 유료 (Pro Tier - $29) - 추후 구현
@@ -234,5 +264,5 @@ docs/reddit-launch-templates.md를 봐. r/SideProject용 글 다듬어줘.
 
 ---
 
-*이 문서는 2026-04-29 작성, 2026-05-11 GitHub 셋업 결과 반영하여 업데이트*
+*이 문서는 2026-04-29 작성, 2026-05-11 GitHub 셋업 + CLI 가다듬기 (PR #1~#3) 세션 결과 반영하여 업데이트*
 *Original 대화 내역은 Claude.ai 웹의 "Otori → AI DevSeed" 대화에 보관됨*
