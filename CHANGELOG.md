@@ -4,6 +4,21 @@ All notable changes to AI DevSeed.
 
 ---
 
+## [Unreleased]
+
+### Added
+- **3 new slash commands** in the base template free tier:
+  - `/idea` — zero-friction idea capture to `docs/ideas/inbox.md`
+  - `/handoff` — generate or update `HANDOFF.md` for next-session pickup
+  - `/retro` — weekly retrospective in `docs/retrospective/`
+- `docs/retrospective/_template.md` and the matching folder, so the retro workflow has a concrete starting point.
+
+### Changed
+- Root README and template README updated to list the expanded command set (free tier now advertises 6 base commands).
+- CLI success message (`init`) prints all six commands so users discover them right after bootstrap.
+
+---
+
 ## [0.1.0-beta.1] · 2026-04-29 (Beta Release) 🌱
 
 ### Initial Release
