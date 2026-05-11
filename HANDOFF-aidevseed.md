@@ -110,7 +110,7 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 
 ### 완료된 것
 - [x] CLI 도구 v0.1.0-beta.1 (실제 동작 확인됨)
-- [x] 2개 템플릿: `base`, `mobile-rn`
+- [x] 3개 템플릿: `base`, `mobile-rn`, `web-react`
 - [x] 핵심 기능: `init`, `list`, `--help`
 - [x] Placeholder 시스템 (`{{PROJECT_NAME}}`, `{{AUTHOR}}` 등)
 - [x] Git 자동 초기화
@@ -136,7 +136,6 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [ ] 첫 사용자 피드백 받기
 
 ### 미완성 (의도적)
-- web-react 템플릿은 placeholder만 (다음 버전)
 - 자동 테스트 없음 (수동 테스트로 충분)
 - Pro 티어 기능 미구현 (먼저 무료 검증)
 
