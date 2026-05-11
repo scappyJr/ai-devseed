@@ -78,6 +78,8 @@ This project uses [Claude Code](https://www.anthropic.com/claude-code) for AI-as
 /handoff               # Generate session-pickup doc
 /retro                 # Weekly retrospective
 /review                # Self code review
+/explore               # Map an unfamiliar area before editing
+/test-plan             # Plan test coverage before writing tests
 ```
 
 See [`docs/workflow-guide.md`](docs/workflow-guide.md) for the daily workflow.
