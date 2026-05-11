@@ -4,7 +4,7 @@
 Accepted ({{DATE}})
 
 ## Context
-Starting a new project. Decided to bootstrap with [AI DevSeed](https://github.com/example/ai-devseed) to leverage proven patterns for AI-collaborative solo development.
+Starting a new project. Decided to bootstrap with [AI DevSeed](https://github.com/scappyJr/ai-devseed) to leverage proven patterns for AI-collaborative solo development.
 
 ## Decision
 Use AI DevSeed as the project foundation, including:
@@ -32,5 +32,5 @@ Use AI DevSeed as the project foundation, including:
 - Need to customize for specific tech stack
 
 ## References
-- AI DevSeed: https://github.com/example/ai-devseed
+- AI DevSeed: https://github.com/scappyJr/ai-devseed
 - This is a generated ADR. Edit or replace as needed.

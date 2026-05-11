@@ -221,6 +221,6 @@ function printSuccessMessage(config) {
 
   console.log('\n' + chalk.gray('━'.repeat(50)));
   console.log(chalk.green('🌱 Happy coding!'));
-  console.log(chalk.gray(`   Star us: https://github.com/example/ai-devseed`));
+  console.log(chalk.gray(`   Star us: https://github.com/scappyJr/ai-devseed`));
   console.log();
 }
