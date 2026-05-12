@@ -171,9 +171,9 @@ The complete journey of building a real app with AI assistance:
 ## 📚 Documentation
 
 - [Getting Started](docs/getting-started.md) - Your first project in 5 minutes
-- [Workflow Guide](docs/workflow.md) - Daily development rhythm
-- [Customization](docs/customization.md) - Adapting templates to your needs
-- [Philosophy](docs/philosophy.md) - The principles behind AI DevSeed
+- [Workflow Guide](packages/cli/templates/base/docs/workflow-guide.md) - Preview of the daily workflow your bootstrapped project gets
+
+Philosophy is covered in the [💡 Philosophy](#-philosophy) section below.
 
 ---
 
