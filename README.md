@@ -209,7 +209,7 @@ This is a beta project! Feedback is incredibly valuable.
 
 - 🐛 **Found a bug?** [Open an issue](https://github.com/scappyJr/ai-devseed/issues)
 - 💡 **Have an idea?** [Start a discussion](https://github.com/scappyJr/ai-devseed/discussions)
-- 🎨 **Want to add a template?** PRs welcome
+- 🎨 **Want to add a template?** See [CONTRIBUTING.md](CONTRIBUTING.md) for branch flow, commit conventions, and local setup. PRs welcome.
 
 ---
 
