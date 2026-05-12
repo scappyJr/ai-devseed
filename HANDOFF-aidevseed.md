@@ -4,7 +4,7 @@
 
 ---
 
-## 🔄 다음 세션 시작하기 (Last sync: 2026-05-12)
+## 🔄 다음 세션 시작하기 (Last sync: 2026-05-13)
 
 ### 다른 환경에서 이어 작업하려면
 
@@ -26,7 +26,7 @@ claude
 
 ### 어디까지 했고 다음에 뭐 할지
 
-**완료** — 2026-05-11/12 출시 준비 전체 (Public 전환 직전):
+**완료** — 2026-05-11~13 출시 준비 전체 (Public 전환 직전):
 
 **Phase 1 — GitHub 셋업** (2026-05-11 오전)
 - Private 저장소, main/develop, Topics 14개, 라벨 20개, `.gitignore`, 로컬 `git config`
@@ -59,6 +59,14 @@ claude
 - E2E 기능 테스트: 3개 템플릿 init + 7개 file-output 슬래시 명령 (모든 산출물 검증) + 4개 대화형 명령 (instruction 품질 검토)
 - Init 흐름 검증: 에러 케이스 (non-empty dir, invalid name, 51자, 하이픈-시작) + 모든 플래그 (`--yes`, `--no-git`, `-t`)
 - **재검증 (Windows 환경, post-PR #16)**: 14개 케이스 전체 통과 — smoke(version/list/help), init×3 템플릿(27/28/28 files, .git ✓), placeholder 100% 치환, overlay 패턴(`/new-screen`, `/new-page` + 플랫폼별 CLAUDE.md), base 슬래시 명령 8개 모두 존재, `--no-git`/잘못된 이름/51자/non-empty dir 모두 exit 1. 하이픈-시작 결함은 알려진 대로 재현됨.
+
+**Phase 5 — 메인테이너 워크플로우 보강** (2026-05-13, develop only)
+- 개인 워크플로우 슬래시 명령 2개 추가 (repo root `.claude/commands/`):
+  - `/sync-from-web` — Claude.ai 세션 결과(결정/아이디어/문서/디자인)를 ADR·아이디어 인박스·HANDOFF·git 커밋까지 자동 반영
+  - `/prepare-for-web` — git log/status/HANDOFF에서 컨텍스트 자동 수집해 Claude.ai에 붙여넣을 프롬프트 생성 (6가지 목적별 템플릿, 클립보드 자동 복사)
+- `docs/sync-workflow-guide.md` 추가 — 도구 역할 분담, 일일 패턴 4가지, 전환 결정 트리, 흔한 실수 6가지
+- develop 커밋: `3f205fa` (HANDOFF 재검증 노트), `4e47541` (sync 워크플로우). origin/develop 동기화 완료.
+- ⚠️ **develop이 main보다 2 커밋 앞섬** — npm publish는 `packages/cli/` 만 묶으므로 무영향. 다음 release sync PR에서 main으로 함께 반영하면 됨.
 
 **다음 액션** (출시 준비 100% 완료, 사용자 GUI 작업 4건):
 
