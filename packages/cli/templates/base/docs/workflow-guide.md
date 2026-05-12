@@ -122,6 +122,23 @@ Good commit units:
 - Style polish
 - Single bug fix
 
+### 🛡️ Branch Protection (GitHub)
+
+Even as a solo dev, set up branch protection on `main` to prevent accidents
+(force-push, branch delete, untested merges).
+
+**GitHub → Settings → Branches → Add branch protection rule**, target `main`:
+
+- ✅ **Require a pull request before merging** — forces PR flow even when working
+  alone (catches "oh wait I committed straight to main" mistakes).
+- ✅ **Require linear history** — disallows merge commits, keeps history readable.
+- ✅ **Block force pushes** — prevents accidental history rewrites.
+- ✅ **Restrict deletions** — prevents accidentally deleting `main`.
+- ⏸ Skip "Require approvals" — you're solo, you'd be approving your own PRs.
+- ⏸ Skip "Require status checks" until CI is set up.
+
+Same rules can apply to `develop` if you want stricter integration-branch hygiene.
+
 ---
 
 ## 📅 Daily Journal
