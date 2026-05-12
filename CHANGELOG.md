@@ -7,19 +7,33 @@ All notable changes to AI DevSeed.
 ## [Unreleased]
 
 ### Added
-- **3 new slash commands** in the base template free tier:
+- **5 new slash commands** in the base template free tier (8 total):
   - `/idea` — zero-friction idea capture to `docs/ideas/inbox.md`
   - `/handoff` — generate or update `HANDOFF.md` for next-session pickup
   - `/retro` — weekly retrospective in `docs/retrospective/`
-- `docs/retrospective/_template.md` and the matching folder, so the retro workflow has a concrete starting point.
-- **`web-react` template** is no longer a placeholder. It now overlays a React 18 + Vite + TypeScript flavored `CLAUDE.md` plus a `/new-page` slash command for scaffolding pages under `src/pages/`, matching the `mobile-rn` template's depth.
-- **2 more slash commands** in the base template:
   - `/explore` — map an unfamiliar area of the codebase before editing (read-only context scan)
   - `/test-plan` — design test coverage in a prioritized checklist before writing tests
+- `docs/retrospective/_template.md` and the matching folder, so the retro workflow has a concrete starting point.
+- **`web-react` template** is no longer a placeholder. It now overlays a React 18 + Vite + TypeScript flavored `CLAUDE.md` plus a `/new-page` slash command for scaffolding pages under `src/pages/`, matching the `mobile-rn` template's depth.
+- **Branch Protection guide** in `packages/cli/templates/base/docs/workflow-guide.md` — solo-friendly GitHub branch protection recommendations (require PR, linear history, block force pushes, restrict deletions).
+- **README hero demo screenshot** (`docs/images/demo.png`) showing real CLI output end-to-end.
 
 ### Changed
-- Root README and template README updated to list the expanded command set (free tier now advertises 8 base commands).
-- CLI success message (`init`) prints all eight commands so users discover them right after bootstrap.
+- Root README and template README list the expanded command set; CLI success message (`init`) prints all 8 base commands after bootstrap.
+- Free pricing-table tier now shows Mobile (RN+Expo) and Web (React+Vite) templates as ✅/✅ — previously listed under Pro-only, contradicting actual CLI behavior.
+- Idea-management description: "Inbox / Big Ideas / Backlog" → "Inbox / Big Ideas / GitHub Issues". The Backlog file never existed; GitHub Issues IS the backlog stage per the documented idea-flow design.
+- Sharing CTA: Twitter/X → Reddit / Dev.to, matching the project's actual launch channel mix.
+- README "Interactive Setup" code mockup replaced with an accurate textual bullet list — the hero screenshot already shows real output, and the mockup had drifted from CLI reality (fictional output lines, missing Author prompt, wrong final message).
+- README label count corrected: "25 labels" → "20 labels" (matches what `.github/setup-labels.sh` actually creates).
+- "Branch protection guides" → "Branch protection guide (in `workflow-guide.md`)" — singular, verifiable, no broken link implication.
+
+### Fixed
+- Placeholder URL `github.com/example/ai-devseed` replaced with `scappyJr/ai-devseed` in 6 places (CLI banner output, base template README / CHANGELOG / ADR-001). Before this fix, every bootstrapped project linked back to a non-existent example repo.
+- Phantom `? Create GitHub repo? (y/N)` prompt removed from README mockup — the feature was never implemented in `init.js`.
+- 4 broken `docs/` links removed from README: `docs/workflow.md`, `docs/customization.md`, and two occurrences of `docs/philosophy.md`. Workflow Guide link repointed to the live template file.
+- Otori example link disabled (`github.com/scappyJr/otori-app` returned 404 — Otori is still in private development; the credibility-hook text was kept with a "(public release pending)" qualifier).
+- Dead external footer links removed: `ai-devseed.dev` (DNS does not resolve) and the Twitter handle link (project does not use Twitter per its own launch strategy).
+- Pro Gumroad link consistently qualified with "*(Coming soon)*" across all 3 occurrences — the page doesn't exist yet, and previously two of three links 404-ed silently on click.
 
 ---
 
