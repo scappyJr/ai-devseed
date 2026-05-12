@@ -181,7 +181,7 @@ Philosophy is covered in the [💡 Philosophy](#-philosophy) section below.
 
 AI DevSeed was extracted from real solo development projects. See it in action:
 
-- **[Otori](https://github.com/scappyJr/otori-app)** - A weather-based outfit recommendation app, built solo with Claude Code in 60 days using these exact templates.
+- **Otori** *(public release pending — currently in private development)* — A weather-based outfit recommendation app, built solo with Claude Code in 60 days using these exact templates.
 
 ---
 
