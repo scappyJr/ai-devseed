@@ -75,8 +75,8 @@ my-app/
 
 ### 🐙 GitHub Integration
 - Issue templates (Bug / Feature / Task)
-- Label setup script (one command, 25 labels)
-- Branch protection guides
+- Label setup script (one command, 20 labels)
+- Branch protection guide (in `workflow-guide.md`)
 - Conventional Commits guide
 
 ---
@@ -107,7 +107,6 @@ The CLI will ask you a few questions:
     Generic / Custom
 
 ? Initialize Git? (Y/n)
-? Create GitHub repo? (y/N)
 
 ✨ Creating your project...
 ✅ Project structure created
