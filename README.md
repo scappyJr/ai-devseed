@@ -107,7 +107,6 @@ The CLI will ask you a few questions:
     Generic / Custom
 
 ? Initialize Git? (Y/n)
-? Create GitHub repo? (y/N)
 
 ✨ Creating your project...
 ✅ Project structure created
