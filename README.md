@@ -69,7 +69,7 @@ my-app/
 
 ### 📋 Project Management Tools
 - WBS (Work Breakdown Structure) templates
-- Idea management system (Inbox / Big Ideas / Backlog)
+- Idea management system (Inbox / Big Ideas / GitHub Issues)
 - ADR templates for documenting decisions
 - Daily journal templates
 
@@ -94,28 +94,16 @@ ai-devseed init my-app
 ```
 
 ### Interactive Setup
-The CLI will ask you a few questions:
 
-```
-🌱 AI DevSeed v0.1.0-beta
+The CLI walks you through a few quick questions:
 
-? Project name: my-app
-? Project description: A really cool project
-? Project type:
-  ❯ Mobile App (React Native + Expo)
-    Web App (React + Vite)
-    Generic / Custom
+- **Project name** (used as the folder name)
+- **Description** *(optional)*
+- **Author** *(optional)*
+- **Project type** — Mobile (React Native + Expo), Web (React + Vite), or Generic
+- **Initialize Git?** (default: yes)
 
-? Initialize Git? (Y/n)
-
-✨ Creating your project...
-✅ Project structure created
-✅ Documentation initialized
-✅ Claude Code configured
-✅ Git initialized
-
-🎉 All done! cd my-app && claude
-```
+The full flow takes ~30 seconds — see the screenshot near the top of this README for the actual output.
 
 ### Start Coding
 ```bash
@@ -213,8 +201,6 @@ AI DevSeed is built on three principles:
 2. **AI-First Documentation** - Docs are designed for AI to read and contribute
 3. **Solo But Not Alone** - You + AI is a team. Set up like one.
 
-Read more: [Philosophy](docs/philosophy.md)
-
 ---
 
 ## 🤝 Contributing
@@ -242,7 +228,7 @@ A solo developer building real things with AI.
 If AI DevSeed helps you, consider:
 - ⭐ Starring this repo
 - 🐦 Sharing on Twitter/X
-- 💝 Getting [Pro](https://gumroad.com/ai-devseed-pro) to support development
+- 💝 Getting [Pro](https://gumroad.com/ai-devseed-pro) *(Coming soon)* to support development
 - ☕ [Buying me a coffee](https://buymeacoffee.com/scappyJr)
 
 ---
@@ -251,6 +237,6 @@ If AI DevSeed helps you, consider:
 
 **Made with 🌱 for the AI-collaborative future of solo development**
 
-[Website](https://ai-devseed.dev) · [Twitter](https://twitter.com/scappyJr) · [Pro](https://gumroad.com/ai-devseed-pro)
+[Pro](https://gumroad.com/ai-devseed-pro) *(Coming soon)*
 
 </div>
