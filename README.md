@@ -201,8 +201,6 @@ AI DevSeed is built on three principles:
 2. **AI-First Documentation** - Docs are designed for AI to read and contribute
 3. **Solo But Not Alone** - You + AI is a team. Set up like one.
 
-Read more: [Philosophy](docs/philosophy.md)
-
 ---
 
 ## 🤝 Contributing
