@@ -69,7 +69,7 @@ my-app/
 
 ### 📋 Project Management Tools
 - WBS (Work Breakdown Structure) templates
-- Idea management system (Inbox / Big Ideas / Backlog)
+- Idea management system (Inbox / Big Ideas / GitHub Issues)
 - ADR templates for documenting decisions
 - Daily journal templates
 
