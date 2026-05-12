@@ -58,6 +58,7 @@ claude
 - GitHub 프로필 Name → `scappyJr` (사용자 직접)
 - E2E 기능 테스트: 3개 템플릿 init + 7개 file-output 슬래시 명령 (모든 산출물 검증) + 4개 대화형 명령 (instruction 품질 검토)
 - Init 흐름 검증: 에러 케이스 (non-empty dir, invalid name, 51자, 하이픈-시작) + 모든 플래그 (`--yes`, `--no-git`, `-t`)
+- **재검증 (Windows 환경, post-PR #16)**: 14개 케이스 전체 통과 — smoke(version/list/help), init×3 템플릿(27/28/28 files, .git ✓), placeholder 100% 치환, overlay 패턴(`/new-screen`, `/new-page` + 플랫폼별 CLAUDE.md), base 슬래시 명령 8개 모두 존재, `--no-git`/잘못된 이름/51자/non-empty dir 모두 exit 1. 하이픈-시작 결함은 알려진 대로 재현됨.
 
 **다음 액션** (출시 준비 100% 완료, 사용자 GUI 작업 4건):
 
