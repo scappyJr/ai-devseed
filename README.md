@@ -242,7 +242,7 @@ A solo developer building real things with AI.
 If AI DevSeed helps you, consider:
 - ⭐ Starring this repo
 - 🐦 Sharing on Twitter/X
-- 💝 Getting [Pro](https://gumroad.com/ai-devseed-pro) to support development
+- 💝 Getting [Pro](https://gumroad.com/ai-devseed-pro) *(Coming soon)* to support development
 - ☕ [Buying me a coffee](https://buymeacoffee.com/scappyJr)
 
 ---
@@ -251,6 +251,6 @@ If AI DevSeed helps you, consider:
 
 **Made with 🌱 for the AI-collaborative future of solo development**
 
-[Website](https://ai-devseed.dev) · [Twitter](https://twitter.com/scappyJr) · [Pro](https://gumroad.com/ai-devseed-pro)
+[Pro](https://gumroad.com/ai-devseed-pro) *(Coming soon)*
 
 </div>
