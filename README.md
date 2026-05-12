@@ -138,14 +138,14 @@ claude
 | **Core Templates** | ✅ | ✅ |
 | Folder structure | ✅ | ✅ |
 | CLAUDE.md template | ✅ | ✅ |
+| Mobile template (RN + Expo) | ✅ | ✅ |
+| Web template (React + Vite) | ✅ | ✅ |
 | Basic ADR templates | ✅ | ✅ |
 | 8 essential slash commands | ✅ | ✅ |
 | GitHub setup guide | ✅ | ✅ |
 | Markdown WBS | ✅ | ✅ |
 | **Pro Features** | | |
 | 15+ extended slash commands | ❌ | ✅ |
-| Mobile app templates (RN+Expo) | ❌ | ✅ |
-| Web app templates (React+Vite) | ❌ | ✅ |
 | Excel WBS with formulas | ❌ | ✅ |
 | Gantt chart SVG generator | ❌ | ✅ |
 | 10 ADR scenario templates | ❌ | ✅ |
@@ -171,9 +171,9 @@ The complete journey of building a real app with AI assistance:
 ## 📚 Documentation
 
 - [Getting Started](docs/getting-started.md) - Your first project in 5 minutes
-- [Workflow Guide](docs/workflow.md) - Daily development rhythm
-- [Customization](docs/customization.md) - Adapting templates to your needs
-- [Philosophy](docs/philosophy.md) - The principles behind AI DevSeed
+- [Workflow Guide](packages/cli/templates/base/docs/workflow-guide.md) - Preview of the daily workflow your bootstrapped project gets
+
+Philosophy is covered in the [💡 Philosophy](#-philosophy) section below.
 
 ---
 
@@ -181,7 +181,7 @@ The complete journey of building a real app with AI assistance:
 
 AI DevSeed was extracted from real solo development projects. See it in action:
 
-- **[Otori](https://github.com/scappyJr/otori-app)** - A weather-based outfit recommendation app, built solo with Claude Code in 60 days using these exact templates.
+- **Otori** *(public release pending — currently in private development)* — A weather-based outfit recommendation app, built solo with Claude Code in 60 days using these exact templates.
 
 ---
 
