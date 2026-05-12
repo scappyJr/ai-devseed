@@ -94,28 +94,16 @@ ai-devseed init my-app
 ```
 
 ### Interactive Setup
-The CLI will ask you a few questions:
 
-```
-🌱 AI DevSeed v0.1.0-beta
+The CLI walks you through a few quick questions:
 
-? Project name: my-app
-? Project description: A really cool project
-? Project type:
-  ❯ Mobile App (React Native + Expo)
-    Web App (React + Vite)
-    Generic / Custom
+- **Project name** (used as the folder name)
+- **Description** *(optional)*
+- **Author** *(optional)*
+- **Project type** — Mobile (React Native + Expo), Web (React + Vite), or Generic
+- **Initialize Git?** (default: yes)
 
-? Initialize Git? (Y/n)
-
-✨ Creating your project...
-✅ Project structure created
-✅ Documentation initialized
-✅ Claude Code configured
-✅ Git initialized
-
-🎉 All done! cd my-app && claude
-```
+The full flow takes ~30 seconds — see the screenshot near the top of this README for the actual output.
 
 ### Start Coding
 ```bash
