@@ -138,14 +138,14 @@ claude
 | **Core Templates** | ✅ | ✅ |
 | Folder structure | ✅ | ✅ |
 | CLAUDE.md template | ✅ | ✅ |
+| Mobile template (RN + Expo) | ✅ | ✅ |
+| Web template (React + Vite) | ✅ | ✅ |
 | Basic ADR templates | ✅ | ✅ |
 | 8 essential slash commands | ✅ | ✅ |
 | GitHub setup guide | ✅ | ✅ |
 | Markdown WBS | ✅ | ✅ |
 | **Pro Features** | | |
 | 15+ extended slash commands | ❌ | ✅ |
-| Mobile app templates (RN+Expo) | ❌ | ✅ |
-| Web app templates (React+Vite) | ❌ | ✅ |
 | Excel WBS with formulas | ❌ | ✅ |
 | Gantt chart SVG generator | ❌ | ✅ |
 | 10 ADR scenario templates | ❌ | ✅ |
