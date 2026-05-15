@@ -6,6 +6,10 @@ All notable changes to AI DevSeed.
 
 ## [Unreleased]
 
+---
+
+## [0.1.0-beta.2] · 2026-05-15
+
 ### Added
 - **3 new slash commands** in the base template free tier:
   - `/idea` — zero-friction idea capture to `docs/ideas/inbox.md`
@@ -16,10 +20,20 @@ All notable changes to AI DevSeed.
 - **2 more slash commands** in the base template:
   - `/explore` — map an unfamiliar area of the codebase before editing (read-only context scan)
   - `/test-plan` — design test coverage in a prioritized checklist before writing tests
+- **Branch Protection setup guide** added to `templates/base/docs/workflow-guide.md` — step-by-step GitHub UI instructions so users can act on the README's "protect `main`" recommendation without guessing.
+- `CONTRIBUTING.md` at the repo root, linked from the README's Contributing section, to onboard first-time contributors.
 
 ### Changed
 - Root README and template README updated to list the expanded command set (free tier now advertises 8 base commands).
 - CLI success message (`init`) prints all eight commands so users discover them right after bootstrap.
+
+### Fixed
+- README pricing table no longer self-contradicts: Mobile / Web templates are listed under Free (matches what ships), and Pro features are consistently labeled "Coming soon".
+- Replaced the fake CLI mockup (showed a non-existent "Create GitHub repo?" prompt) with an accurate bullet list of what `init` actually outputs.
+- Corrected the label-count claim from 25 to 20 to match the actual `setup-labels.sh`.
+- Removed dead external links — defunct project domain, unused Twitter handle, broken `docs/` paths, and a leftover `philosophy.md` reference — so README links no longer 404.
+- Marked the Otori showcase link as pending public release instead of pointing at a 404.
+- Sharing CTAs now point at Reddit / Dev.to instead of Twitter, matching the actual launch plan.
 
 ---
 
