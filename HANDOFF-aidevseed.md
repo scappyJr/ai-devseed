@@ -4,66 +4,97 @@
 
 ---
 
-## 🔄 다음 세션 시작하기 (Last sync: 2026-05-11)
+## 🔄 다음 세션 시작하기 (Last sync: 2026-05-13)
 
 ### 다른 환경에서 이어 작업하려면
 
 ```bash
-# 1. Private repo이므로 gh 인증 필요
-gh auth login
-
-# 2. 클론
-gh repo clone scappyJr/ai-devseed
+# 1. 클론 (repo가 Public이면 gh 인증 불필요)
+git clone https://github.com/scappyJr/ai-devseed
 cd ai-devseed
 
-# 3. 의존성 설치
+# 2. 의존성 설치
 cd packages/cli && npm install && cd ../..
 
-# 4. 작업 브랜치로 전환 (develop이 통합 브랜치)
+# 3. 작업 브랜치 (develop이 통합 브랜치)
 git checkout develop
 
-# 5. Claude Code 시작
+# 4. Claude Code 시작
 claude
 # 첫 메시지: "@HANDOFF-aidevseed.md 읽어줘"
 ```
 
 ### 어디까지 했고 다음에 뭐 할지
 
-**완료** — 2026-05-11 GitHub 셋업 세션 + 같은 날 후속 CLI 가다듬기 세션:
+**완료** — 2026-05-11~13 출시 준비 전체 (Public 전환 직전):
 
-이전(오전, GitHub 셋업) 세션:
-- GitHub Private 저장소 + main/develop 브랜치 + Topics 14개 + 라벨 20개 + `.gitignore` + 로컬 `git config`
+**Phase 1 — GitHub 셋업** (2026-05-11 오전)
+- Private 저장소, main/develop, Topics 14개, 라벨 20개, `.gitignore`, 로컬 `git config`
 
-후속(오후, CLI 가다듬기) 세션 — PR 흐름 정착:
-- **PR #1** (→ main, 머지됨): hero 데모 스크린샷(`docs/images/demo.png`) + `github.com/example/...` placeholder URL 6곳 수정 (CLI 코드 + base 템플릿 3개 파일)
-- **PR #2** (→ develop, 머지됨): free tier 슬래시 명령 3개 추가 (`/idea`, `/handoff`, `/retro`) + `docs/retrospective/_template.md` + 루트/템플릿 README · CLI success message · workflow-guide 동기화
-- **PR #3** (→ develop, 머지됨): `web-react` 템플릿 placeholder → 실제 overlay (`CLAUDE.md` + `/new-page` 명령). 브랜치 `feature/web-react-template`은 머지와 함께 삭제됨.
-- **PR #4** (→ develop, 머지됨): free tier 슬래시 명령 2개 추가 (`/explore`, `/test-plan`) + 루트/템플릿 README · CLI success message · CHANGELOG 동기화. 브랜치는 머지와 함께 삭제됨.
-- **PR #5** (→ main, 머지됨): release merge — PR #2/#3/#4 누적분(8 커밋, +468/-26)을 main으로 반영. develop은 통합 브랜치라 보존. `package.json` 버전은 `0.1.0-beta.1` 그대로 (npm publish 시점에 bump).
+**Phase 2 — CLI 가다듬기 + 기능 보강** (PR #1~#5)
+- PR #1: hero 데모 스크린샷(`docs/images/demo.png`) + `example/ai-devseed` placeholder URL 6곳 수정
+- PR #2: 슬래시 명령 3개 (`/idea`, `/handoff`, `/retro`) + retrospective 폴더 + `_template.md`
+- PR #3: `web-react` 템플릿 실 overlay (`CLAUDE.md` + `/new-page`)
+- PR #4: 슬래시 명령 2개 (`/explore`, `/test-plan`) → base 8개 total
+- PR #5: release sync (develop → main)
 
-기타:
-- 글로벌 `git config` 설정 완료 (`scappyJr` / `hwkim@mammothsoft.co.kr`) — 외부 디렉터리에서도 git init/commit OK
-- 로컬 phantom `package-lock.json` 삭제 (루트 89-byte 빈 lockfile)
+**Phase 3 — README audit + 2차 polish** (PR #6~#16)
+- PR #6: pricing-table 자가모순, 깨진 docs/ 링크, Otori 404 처리
+- PR #7: release sync
+- PR #8: 가짜 "Create GitHub repo?" prompt 제거, "25 labels"→"20 labels", **Branch Protection 가이드** 작성 (in base/workflow-guide.md)
+- PR #9: release sync
+- PR #10: 외부 링크 검증 — 죽은 `ai-devseed.dev` / Twitter 링크 제거, Pro Gumroad "Coming soon" 일관 표기
+- PR #11: mockup → bullet list, Backlog → GitHub Issues, Twitter→Reddit/Dev.to CTA, 잔존 philosophy.md 링크 제거
+- PR #12: CHANGELOG `[Unreleased]` 보강 (실수로 main 직접 머지 — 결과적으로 OK)
+- PR #13: release sync
+- PR #14: Twitter→Reddit/Dev.to 회귀 hotfix (PR #11 conflict resolution에서 한 줄 잃었던 거 복구)
+- PR #15: CONTRIBUTING.md 추가 + README 링크
+- PR #16: 최종 release sync (develop → main)
 
-**다음 액션** (우선순위 순):
+**Phase 4 — Public 출시 직전 정비** (2026-05-12 마무리)
+- Sensitive info 스캔: 자격증명/시크릿/내부경로/TODO 전부 0건
+- **`git filter-repo`로 전체 40 commits 이메일 noreply 치환** (`terroir713@gmail.com`, `hwkim@mammothsoft.co.kr` → `50819563+scappyJr@users.noreply.github.com`) + force-push to main/develop
+- 글로벌 git config user.email → noreply (사용자 직접)
+- GitHub 프로필 Name → `scappyJr` (사용자 직접)
+- E2E 기능 테스트: 3개 템플릿 init + 7개 file-output 슬래시 명령 (모든 산출물 검증) + 4개 대화형 명령 (instruction 품질 검토)
+- Init 흐름 검증: 에러 케이스 (non-empty dir, invalid name, 51자, 하이픈-시작) + 모든 플래그 (`--yes`, `--no-git`, `-t`)
+- **재검증 (Windows 환경, post-PR #16)**: 14개 케이스 전체 통과 — smoke(version/list/help), init×3 템플릿(27/28/28 files, .git ✓), placeholder 100% 치환, overlay 패턴(`/new-screen`, `/new-page` + 플랫폼별 CLAUDE.md), base 슬래시 명령 8개 모두 존재, `--no-git`/잘못된 이름/51자/non-empty dir 모두 exit 1. 하이픈-시작 결함은 알려진 대로 재현됨.
 
-1. **Public 전환** — `gh repo edit scappyJr/ai-devseed --visibility public --accept-visibility-change-consequences` 또는 GitHub Settings → General → Change visibility. **npm/Reddit 출시 게이트**.
-2. **(선택) 더 기능 추가** — Public 전환 전이든 후든 후보:
-   - 새 템플릿 (예: Node.js CLI 라이브러리, fullstack)
-   - 데모 GIF (현재 정적 PNG → 애니메이션)
-   - CLI 에러 메시지 개선
-3. **npm publish 준비** — `packages/cli/package.json` 버전 bump (`0.1.0-beta.1` → 다음), `CHANGELOG.md` [Unreleased] → 버전 섹션으로 이동, npm 계정 + 2FA → `cd packages/cli && npm publish --tag beta`
-4. Reddit/Disquiet 출시 글
+**Phase 5 — 메인테이너 워크플로우 보강** (2026-05-13, develop only)
+- 개인 워크플로우 슬래시 명령 2개 추가 (repo root `.claude/commands/`):
+  - `/sync-from-web` — Claude.ai 세션 결과(결정/아이디어/문서/디자인)를 ADR·아이디어 인박스·HANDOFF·git 커밋까지 자동 반영
+  - `/prepare-for-web` — git log/status/HANDOFF에서 컨텍스트 자동 수집해 Claude.ai에 붙여넣을 프롬프트 생성 (6가지 목적별 템플릿, 클립보드 자동 복사)
+- `docs/sync-workflow-guide.md` 추가 — 도구 역할 분담, 일일 패턴 4가지, 전환 결정 트리, 흔한 실수 6가지
+- develop 커밋: `3f205fa` (HANDOFF 재검증 노트), `4e47541` (sync 워크플로우). origin/develop 동기화 완료.
+- ⚠️ **develop이 main보다 2 커밋 앞섬** — npm publish는 `packages/cli/` 만 묶으므로 무영향. 다음 release sync PR에서 main으로 함께 반영하면 됨.
+
+**다음 액션** (출시 준비 100% 완료, 사용자 GUI 작업 4건):
+
+1. **Public 전환** — Settings → General → Danger Zone → Change repository visibility → Make public → 2FA 확인
+2. **Branch Protection 적용** (Public이면 무료) — Settings → Branches → Add branch protection rule on `main`:
+   - ✅ Require a pull request before merging
+   - ✅ Require linear history
+   - ✅ Block force pushes
+   - ✅ Restrict deletions
+   - ⏸ Skip "Require approvals" (솔로) / "Require status checks" (CI 없음)
+3. **npm publish 흐름**:
+   - `packages/cli/package.json` 버전 bump (`0.1.0-beta.1` → 보통 `0.1.0-beta.2`)
+   - `CHANGELOG.md` `[Unreleased]` → `[0.1.0-beta.2] · 2026-05-XX` 섹션화 + 새 빈 `[Unreleased]` 위에 추가
+   - npm 계정 + 2FA → `cd packages/cli && npm publish --tag beta`
+4. Reddit/Disquiet 출시 글 (`docs/reddit-launch-templates.md` 참고)
 
 ### 주의사항
 
-- ⚠️ 로컬 Claude 메모리(`~/.claude/projects/.../memory/`)는 다른 환경에 동기화 안 됨. 새 환경에선 이 문서가 핵심 컨텍스트.
+- ⚠️ 로컬 Claude 메모리(`~/.claude/projects/.../memory/`)는 다른 환경에 동기화 안 됨. 새 환경에선 이 문서 + memory 인덱스가 핵심.
 - ⚠️ npm publish와 Reddit 출시는 **Public 전환 후**에만 진행.
-- ℹ️ `gh` CLI 인증 완료 (`scappyJr`, scopes: `gist`, `read:org`, `repo`). PR 생성·머지·브랜치 삭제 모두 CLI에서 가능.
-- ⚠️ **PR 생성 시 base 브랜치 주의** — GitHub 기본은 `main`. CLAUDE.md 흐름(`feature/* → develop`)을 따르려면 PR 만들 때 base를 **develop으로 명시 변경**. (PR #1은 실수로 main에 머지된 이력 있음.)
-- ⚠️ 루트 `package-lock.json` 재발 주의 — npm 명령은 항상 `packages/cli/` 안에서. 루트에서 잘못 돌리면 빈 lockfile 생김 (그땐 그냥 `rm package-lock.json`).
+- ⚠️ **`gh` CLI 인증 fragile** — 세션마다 `& "C:\Program Files\GitHub CLI\gh.exe" auth status`로 먼저 확인. unauth 상태면 `git push -u` 후 출력되는 URL로 웹 PR 생성 (B방식). 재인증: `! "C:\Program Files\GitHub CLI\gh.exe" auth login`.
+- ⚠️ **PR 생성 시 base 브랜치 주의** — GitHub 기본은 `main`. CLAUDE.md 흐름(`feature/* → develop`)을 따르려면 PR 만들 때 base를 **develop으로 명시 변경**. (PR #1, PR #12 두 번 실수로 main에 머지된 이력.)
+- ⚠️ 루트 `package-lock.json` 재발 주의 — npm 명령은 항상 `packages/cli/` 안에서. 루트에서 잘못 돌리면 빈 lockfile 생김.
+- ℹ️ 글로벌 git config user.email은 이제 **noreply**. 새 commit도 안전 (개인 이메일 노출 없음).
 - ℹ️ `packages/cli/package-lock.json`은 tracked. 새 환경 셋업: `cd packages/cli && npm install` 필수.
-- ℹ️ **AI DevSeed 템플릿 = overlay 패턴**. `init.js`가 항상 `base/`를 복사한 뒤 선택 템플릿을 `overwrite: true`로 덮음. mobile-rn/web-react는 코드 스캐폴드가 아니라 `CLAUDE.md` + 플랫폼별 명령 1개를 덮는 **AI 컨텍스트 overlay**일 뿐. 새 템플릿 작업 scope 잡을 때 잊지 말 것.
+- ℹ️ **AI DevSeed 템플릿 = overlay 패턴**. `init.js`가 항상 `base/`를 복사한 뒤 선택 템플릿을 `overwrite: true`로 덮음. mobile-rn/web-react는 코드 스캐폴드가 아니라 `CLAUDE.md` + 플랫폼별 명령 1개를 덮는 **AI 컨텍스트 overlay**.
+- ℹ️ **알려진 minor UX 결함** (출시 후 patch 후보): 프로젝트 이름이 `-`로 시작하면 Commander.js가 flag로 오인 → 우리 validator 메시지 안 뜨고 generic "unknown option" 에러 노출.
+- ℹ️ **이전 commit SHA 무효화**: `git filter-repo`로 전체 history 재작성 → 옛 SHA는 더 이상 존재 안 함. 본 문서나 memory에 SHA 직접 언급 거의 없음.
 
 ---
 
@@ -116,16 +147,21 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [x] 로컬 → GitHub 푸시 (main + develop)
 - [x] About + Topics + 라벨 셋업
 - [x] README hero 데모 스크린샷 (PR #1)
-- [x] `github.com/example/...` placeholder URL 6곳 수정 (PR #1)
-- [x] Free tier 슬래시 명령 6개로 확장 (PR #2 — `/idea`, `/handoff`, `/retro` 추가)
-- [x] web-react 템플릿 실 overlay (PR #3, 머지됨)
-- [x] Free tier 슬래시 명령 8개로 확장 (PR #4 — `/explore`, `/test-plan` 추가)
-- [x] `develop` → `main` release merge (PR #5)
-- [ ] (선택) 더 기능 추가 — Public 전환 전 product 보강
-- [ ] **Public 전환** (npm/Reddit 출시 게이트)
-- [ ] npm 계정 만들기 + 2FA
-- [ ] `npm publish --tag beta` (베타 출시)
-- [ ] Reddit/Disquiet에 출시 글
+- [x] `example/ai-devseed` placeholder URL 수정 (PR #1)
+- [x] Free tier 슬래시 명령 8개로 확장 (PR #2 + PR #4)
+- [x] web-react 템플릿 실 overlay (PR #3)
+- [x] develop → main release sync 다회 (PR #5/#7/#9/#13/#16)
+- [x] README audit 8건 모두 수정 (PR #6/#8/#10/#11/#14)
+- [x] CHANGELOG `[Unreleased]` 보강 (PR #12)
+- [x] CONTRIBUTING.md (PR #15)
+- [x] Sensitive info 스캔 + 개인 이메일 noreply 일괄 치환 (`git filter-repo`)
+- [x] 글로벌 git config noreply 적용 (사용자 직접)
+- [x] GitHub 프로필 Name → scappyJr (사용자 직접)
+- [x] E2E 기능 테스트 (3 템플릿 + 11개 슬래시 명령)
+- [ ] **Public 전환** (Settings → General → Change visibility)
+- [ ] Branch Protection 적용 (Public 후 무료)
+- [ ] npm 계정 + 2FA → `npm publish --tag beta`
+- [ ] Reddit/Disquiet 출시 글
 - [ ] 첫 사용자 피드백 받기
 
 ### 미완성 (의도적)
@@ -139,7 +175,8 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 ### 무료 (Free Tier) - 현재
 - 모든 기본 템플릿 (base + mobile-rn overlay + web-react overlay)
 - 핵심 슬래시 명령 8개 (`/daily`, `/idea`, `/add-decision`, `/handoff`, `/retro`, `/review`, `/explore`, `/test-plan`) + 템플릿별 1개씩 (`/new-screen`, `/new-page`)
-- 문서/워크플로우 셋업
+- 문서/워크플로우 셋업 + Branch Protection 가이드 (in workflow-guide.md)
+- CONTRIBUTING.md (베타 contributors 온보딩)
 
 ### 유료 (Pro Tier - $29) - 추후 구현
 - 추가 슬래시 명령 12+
@@ -256,5 +293,5 @@ docs/reddit-launch-templates.md를 봐. r/SideProject용 글 다듬어줘.
 
 ---
 
-*이 문서는 2026-04-29 작성, 2026-05-11 GitHub 셋업 + CLI 가다듬기 (PR #1~#3) 세션 결과 반영하여 업데이트*
+*이 문서는 2026-04-29 작성, 2026-05-11/12 GitHub 셋업 + CLI 가다듬기 + 출시 준비 (PR #1~#16 + 기능 검증) 결과 반영하여 업데이트*
 *Original 대화 내역은 Claude.ai 웹의 "Otori → AI DevSeed" 대화에 보관됨*
