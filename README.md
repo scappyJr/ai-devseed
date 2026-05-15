@@ -227,7 +227,7 @@ A solo developer building real things with AI.
 
 If AI DevSeed helps you, consider:
 - ⭐ Starring this repo
-- 🐦 Sharing on Twitter/X
+- 📣 Sharing on Reddit / Dev.to
 - 💝 Getting [Pro](https://gumroad.com/ai-devseed-pro) *(Coming soon)* to support development
 - ☕ [Buying me a coffee](https://buymeacoffee.com/scappyJr)
 
