@@ -16,12 +16,16 @@
   "bugs": {
     "url": "https://github.com/scappyJr/ai-devseed/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scappyJr/ai-devseed.git",
+    "directory": "packages/cli"
+  },
   "license": "MIT",
   "author": "scappyJr",
   "type": "module",
-  "main": "src/index.js",
   "bin": {
-    "ai-devseed": "./bin/ai-devseed.js"
+    "ai-devseed": "bin/ai-devseed.js"
   },
   "files": [
     "bin/",
