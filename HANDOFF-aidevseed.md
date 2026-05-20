@@ -4,7 +4,7 @@
 
 ---
 
-## 🔄 다음 세션 시작하기 (Last sync: 2026-05-13)
+## 🔄 다음 세션 시작하기 (Last sync: 2026-05-20)
 
 ### 다른 환경에서 이어 작업하려면
 
@@ -66,10 +66,21 @@ claude
   - `/prepare-for-web` — git log/status/HANDOFF에서 컨텍스트 자동 수집해 Claude.ai에 붙여넣을 프롬프트 생성 (6가지 목적별 템플릿, 클립보드 자동 복사)
 - `docs/sync-workflow-guide.md` 추가 — 도구 역할 분담, 일일 패턴 4가지, 전환 결정 트리, 흔한 실수 6가지
 - develop 커밋: `3f205fa` (HANDOFF 재검증 노트), `4e47541` (sync 워크플로우). origin/develop 동기화 완료.
-- ⚠️ **develop이 main보다 2 커밋 앞섬** — npm publish는 `packages/cli/` 만 묶으므로 무영향. 다음 release sync PR에서 main으로 함께 반영하면 됨.
 
-**다음 액션** (출시 준비 100% 완료, 사용자 GUI 작업 4건):
+**Phase 6 — npm publish 사전 점검 + 차단급 이슈 수정** (2026-05-20, branch `fix/npm-publish-prep`)
+- `npm publish --dry-run --tag beta`로 사전 검증 → publish 차단급 5건 발견:
+  1. **`bin` 필드 `"./bin/ai-devseed.js"`** — npm 11.x가 선행 `./`를 무효로 보고 publish 시 자동 제거 → `npx ai-devseed` 작동 불가. `"bin/ai-devseed.js"`로 수정.
+  2. **`packages/cli/`에 `README.md`/`LICENSE` 부재** — `files` 배열엔 있는데 실제 파일이 없어서 tarball에 미포함, npm 페이지에 README 안 떴을 것. 루트 README 복사 + 상대 링크 6곳을 절대 GitHub URL로 치환 (status 배지 `.`, demo.png, getting-started.md, workflow-guide.md, CONTRIBUTING.md, LICENSE).
+  3. **`repository` 필드 누락** — npm 페이지 GitHub 링크 미표시. `type/url/directory: packages/cli` 추가.
+  4. **`main: "src/index.js"`** — 파일 미존재. CLI라 무해하지만 잘못된 필드 → 제거.
+  5. **npm 이름 `ai-devseed`** — 사용 가능 (404 = 미선점) ✓
+- 재검증: dry-run 경고 사라짐, tarball 36 → 38 파일 (LICENSE 1.1kB + README 7.6kB 포함).
+- Branch `fix/npm-publish-prep` push 완료, **PR 미생성** (gh CLI 미인증, 사용자가 base=develop으로 직접 생성 필요): https://github.com/scappyJr/ai-devseed/pull/new/fix/npm-publish-prep
+- ⚠️ **develop이 main보다 4 커밋 앞섬** (Phase 5 의 2개 + 이 HANDOFF 업데이트 + 향후 publish-prep 머지). npm publish는 `packages/cli/` 만 묶으므로 무영향. 다음 release sync PR에서 main으로 함께 반영.
 
+**다음 액션** (출시 준비 100% 완료 — publish 차단급 이슈는 PR 머지 대기):
+
+0. **PR `fix/npm-publish-prep` → develop 머지** (base=develop 주의, GitHub 기본 main!)
 1. **Public 전환** — Settings → General → Danger Zone → Change repository visibility → Make public → 2FA 확인
 2. **Branch Protection 적용** (Public이면 무료) — Settings → Branches → Add branch protection rule on `main`:
    - ✅ Require a pull request before merging
@@ -77,11 +88,12 @@ claude
    - ✅ Block force pushes
    - ✅ Restrict deletions
    - ⏸ Skip "Require approvals" (솔로) / "Require status checks" (CI 없음)
-3. **npm publish 흐름**:
-   - `packages/cli/package.json` 버전 bump (`0.1.0-beta.1` → 보통 `0.1.0-beta.2`)
-   - `CHANGELOG.md` `[Unreleased]` → `[0.1.0-beta.2] · 2026-05-XX` 섹션화 + 새 빈 `[Unreleased]` 위에 추가
+3. **release sync PR** (develop → main) — Phase 5 + Phase 6 누적 반영
+4. **npm publish 흐름**:
+   - 버전은 이미 `0.1.0-beta.2`, CHANGELOG도 정리됨 (PR #17~#19에서 끝)
    - npm 계정 + 2FA → `cd packages/cli && npm publish --tag beta`
-4. Reddit/Disquiet 출시 글 (`docs/reddit-launch-templates.md` 참고)
+   - publish 후 npm 페이지에서 README 이미지/링크 렌더링 확인
+5. Reddit/Disquiet 출시 글 (`docs/reddit-launch-templates.md` 참고)
 
 ### 주의사항
 
