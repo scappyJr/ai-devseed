@@ -6,9 +6,6 @@
 
 import { execSync } from 'node:child_process';
 
-/**
- * Check if git is available
- */
 function isGitAvailable() {
   try {
     execSync('git --version', { stdio: 'ignore' });
@@ -18,24 +15,26 @@ function isGitAvailable() {
   }
 }
 
-/**
- * Initialize git repository with first commit
- */
+function runGit(args, targetDir) {
+  try {
+    execSync(`git ${args}`, {
+      cwd: targetDir,
+      stdio: ['ignore', 'ignore', 'pipe'],
+    });
+  } catch (error) {
+    const stderr = error.stderr?.toString().trim();
+    const detail = stderr || error.message;
+    throw new Error(`\`git ${args}\` failed: ${detail}`);
+  }
+}
+
 export async function initGit(targetDir) {
   if (!isGitAvailable()) {
     throw new Error('Git is not installed');
   }
 
-  const cwd = { cwd: targetDir, stdio: 'ignore' };
-
-  // Initialize
-  execSync('git init', cwd);
-  execSync('git branch -M main', cwd);
-
-  // First commit
-  execSync('git add .', cwd);
-  execSync(
-    'git commit -m "chore: initial project setup with AI DevSeed"',
-    cwd
-  );
+  runGit('init', targetDir);
+  runGit('branch -M main', targetDir);
+  runGit('add .', targetDir);
+  runGit('commit -m "chore: initial project setup with AI DevSeed"', targetDir);
 }
