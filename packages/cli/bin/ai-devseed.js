@@ -40,7 +40,6 @@ program
   .description('Create a new AI-collaborative project')
   .option('-t, --template <type>', 'Template type (base, mobile-rn, web-react)', 'base')
   .option('--no-git', 'Skip Git initialization')
-  .option('--no-install', 'Skip dependency installation')
   .option('-y, --yes', 'Skip prompts and use defaults')
   .action(async (projectName, options) => {
     console.log(banner);

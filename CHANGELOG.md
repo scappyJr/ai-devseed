@@ -8,9 +8,16 @@ All notable changes to AI DevSeed.
 
 ### Added
 - `packages/cli/templates/base/.github/setup-labels.sh` — the GitHub labels setup script is now actually shipped to bootstrapped projects. README has been advertising this since beta.1, but the file lived only at the AI DevSeed repo root and never made it into the template. Generic version (17 labels: type / priority / status / community / effort), with `{{PROJECT_NAME}}` placeholders in headers; the maintainer-specific `template/*` labels were dropped.
+- `packages/cli/templates/base/.gitattributes` forcing LF on `*.sh` / `*.bash`. Without this, `setup-labels.sh` shipped via npm with CRLF on Windows contributor checkouts, which would break `bash setup-labels.sh` on macOS/Linux users.
+- Template-specific slash command in the post-init success message (`/new-screen` for mobile-rn, `/new-page` for web-react). Both commands existed in the templates but were not surfaced anywhere users would actually notice.
 
 ### Changed
 - README and `packages/cli/README.md`: "20 labels" → "17 labels" to match the new template script.
+- Sponsor link in both READMEs: `buymeacoffee.com/scappyJr` → `ko-fi.com/scappyjr`.
+- `src/utils/git.js` now captures git stderr and includes it in the thrown error. Previously the init flow surfaced "Git initialization skipped: Command failed" with no clue why; common failure (no `user.email` set on a fresh dev machine) is now legible.
+
+### Removed
+- `--no-install` flag from the `init` command. Declared in the Commander setup but never read anywhere — there is no dependency installation step in `init.js`. Dead option that suggested a non-existent feature.
 
 ---
 

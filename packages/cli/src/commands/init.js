@@ -220,6 +220,12 @@ function printSuccessMessage(config) {
   console.log(`  ${chalk.cyan('/explore')}          ${chalk.gray('# Map an area before editing')}`);
   console.log(`  ${chalk.cyan('/test-plan')}        ${chalk.gray('# Plan tests before writing them')}`);
 
+  if (config.template === 'mobile-rn') {
+    console.log(`  ${chalk.cyan('/new-screen')}       ${chalk.gray('# Scaffold a new React Native screen')}`);
+  } else if (config.template === 'web-react') {
+    console.log(`  ${chalk.cyan('/new-page')}         ${chalk.gray('# Scaffold a new React page')}`);
+  }
+
   console.log('\n' + chalk.bold('💡 Read first:\n'));
   console.log(`  ${chalk.cyan('CLAUDE.md')}                  ${chalk.gray('# Project context for AI')}`);
   console.log(`  ${chalk.cyan('docs/workflow-guide.md')}     ${chalk.gray('# Daily workflow')}`);
