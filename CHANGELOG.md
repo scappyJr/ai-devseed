@@ -6,6 +6,12 @@ All notable changes to AI DevSeed.
 
 ## [Unreleased]
 
+### Added
+- `packages/cli/templates/base/.github/setup-labels.sh` — the GitHub labels setup script is now actually shipped to bootstrapped projects. README has been advertising this since beta.1, but the file lived only at the AI DevSeed repo root and never made it into the template. Generic version (17 labels: type / priority / status / community / effort), with `{{PROJECT_NAME}}` placeholders in headers; the maintainer-specific `template/*` labels were dropped.
+
+### Changed
+- README and `packages/cli/README.md`: "20 labels" → "17 labels" to match the new template script.
+
 ---
 
 ## [0.1.0-beta.2] · 2026-05-15
