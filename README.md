@@ -75,7 +75,7 @@ my-app/
 
 ### 🐙 GitHub Integration
 - Issue templates (Bug / Feature / Task)
-- Label setup script (one command, 20 labels)
+- Label setup script (one command, 17 labels)
 - Branch protection guide (in `workflow-guide.md`)
 - Conventional Commits guide
 
