@@ -4,7 +4,7 @@
 
 ---
 
-## 🔄 다음 세션 시작하기 (Last sync: 2026-05-20)
+## 🔄 다음 세션 시작하기 (Last sync: 2026-06-12)
 
 ### 다른 환경에서 이어 작업하려면
 
@@ -75,12 +75,23 @@ claude
   4. **`main: "src/index.js"`** — 파일 미존재. CLI라 무해하지만 잘못된 필드 → 제거.
   5. **npm 이름 `ai-devseed`** — 사용 가능 (404 = 미선점) ✓
 - 재검증: dry-run 경고 사라짐, tarball 36 → 38 파일 (LICENSE 1.1kB + README 7.6kB 포함).
-- Branch `fix/npm-publish-prep` push 완료, **PR 미생성** (gh CLI 미인증, 사용자가 base=develop으로 직접 생성 필요): https://github.com/scappyJr/ai-devseed/pull/new/fix/npm-publish-prep
-- ⚠️ **develop이 main보다 4 커밋 앞섬** (Phase 5 의 2개 + 이 HANDOFF 업데이트 + 향후 publish-prep 머지). npm publish는 `packages/cli/` 만 묶으므로 무영향. 다음 release sync PR에서 main으로 함께 반영.
+- Branch push + PR #21 (base=develop) 머지 완료 (PR 본문 단계는 다음 Phase 7에서 일괄 처리).
 
-**다음 액션** (출시 준비 100% 완료 — publish 차단급 이슈는 PR 머지 대기):
+**Phase 7 — publish 직전 잔여 audit + 버전 cut + main sync** (2026-06-11~12, PR #21~#25)
+- **README↔실제 대조** 1회차: `setup-labels.sh`가 README "GitHub Integration"에서 약속되는데 `packages/cli/templates/base/.github/`에 없음 (repo root에만 존재 → end user 미수령) 발견.
+- PR #22 `fix/template-labels-script` → develop: `setup-labels.sh`를 base 템플릿으로 옮김. AI DevSeed 메인테이너 전용 `template/*` 라벨 3개 제외 → **17 labels** (generic: type/priority/status/community/effort). 헤더에 `{{PROJECT_NAME}}` 치환. README/`packages/cli/README.md` "20 labels" → "17 labels".
+- **Pre-public audit** 2회차 (Explore agent 사용): 4건의 fixable 이슈 발견.
+- PR #23 `fix/pre-launch-polish` → develop:
+  1. `packages/cli/templates/base/.gitattributes` 추가 → `*.sh`/`*.bash` LF 강제. Windows autocrlf가 setup-labels.sh를 CRLF로 ship하면 macOS/Linux에서 bash 깨짐.
+  2. `init.js` `printSuccessMessage`에 템플릿별 명령 출력 (`/new-screen` for mobile-rn, `/new-page` for web-react). README는 광고했는데 CLI가 안 알려줬음.
+  3. `src/utils/git.js` 재작성: stderr를 pipe로 받아 throw error 메시지에 포함. 이전엔 "Git initialization skipped: Command failed"만 노출 → `user.email` 미설정 등 흔한 케이스의 원인 불명.
+  4. `bin/ai-devseed.js`에서 dead `--no-install` flag 제거 (init.js에서 참조 안 됨).
+  5. **사용자 요청**: 후원 링크 `buymeacoffee.com/scappyJr` → `ko-fi.com/scappyjr` (README × 2).
+- PR #24 `chore/v0.1.0-beta.3` → develop: `package.json` 버전 `0.1.0-beta.2` → `0.1.0-beta.3`. CHANGELOG `[Unreleased]` 내용을 `[0.1.0-beta.3] · 2026-06-11`로 cut + publish-prep 변경분 backfill. `package-lock.json` 재생성 (beta.1에 멈춰있던 것 → beta.3).
+- PR #25 release sync (`develop` → `main`): **9 commits, 12 files, +402 -33**. PR #21~#24 누적 + Phase 6 HANDOFF doc.
 
-0. **PR `fix/npm-publish-prep` → develop 머지** (base=develop 주의, GitHub 기본 main!)
+**다음 액션** (출시 준비 100% 완료 — main이 publish-ready 상태):
+
 1. **Public 전환** — Settings → General → Danger Zone → Change repository visibility → Make public → 2FA 확인
 2. **Branch Protection 적용** (Public이면 무료) — Settings → Branches → Add branch protection rule on `main`:
    - ✅ Require a pull request before merging
@@ -88,12 +99,14 @@ claude
    - ✅ Block force pushes
    - ✅ Restrict deletions
    - ⏸ Skip "Require approvals" (솔로) / "Require status checks" (CI 없음)
-3. **release sync PR** (develop → main) — Phase 5 + Phase 6 누적 반영
-4. **npm publish 흐름**:
-   - 버전은 이미 `0.1.0-beta.2`, CHANGELOG도 정리됨 (PR #17~#19에서 끝)
+   - ℹ️ Linear history 켠 뒤 future develop→main PR은 **Rebase and merge** 또는 squash로 (일반 merge commit 차단됨).
+3. **npm publish 흐름**:
+   - 버전: `0.1.0-beta.3`, CHANGELOG `[0.1.0-beta.3]` 정리됨, lockfile sync됨, `npm pack --dry-run` clean (40 files, no warnings)
    - npm 계정 + 2FA → `cd packages/cli && npm publish --tag beta`
-   - publish 후 npm 페이지에서 README 이미지/링크 렌더링 확인
-5. Reddit/Disquiet 출시 글 (`docs/reddit-launch-templates.md` 참고)
+   - publish 후 npm 페이지에서 README 이미지/링크 렌더링 확인 (`packages/cli/README.md`가 절대 GitHub URL 사용)
+   - `npx ai-devseed init test-pkg --yes --no-git` 으로 published version 동작 확인
+4. **Reddit/Disquiet 출시 글** (`docs/reddit-launch-templates.md` 참고) — Claude가 draft 도움 가능. publish 후 실제 npm URL 확보 후 진행 권장.
+5. **첫 사용자 피드백 대응** — Issue/Discussion 응답, hyphen-leading-name 결함 등 patch 후보 정리.
 
 ### 주의사항
 
@@ -305,5 +318,5 @@ docs/reddit-launch-templates.md를 봐. r/SideProject용 글 다듬어줘.
 
 ---
 
-*이 문서는 2026-04-29 작성, 2026-05-11/12 GitHub 셋업 + CLI 가다듬기 + 출시 준비 (PR #1~#16 + 기능 검증) 결과 반영하여 업데이트*
+*이 문서는 2026-04-29 작성, 2026-05-11/12 GitHub 셋업 + CLI 가다듬기 + 출시 준비 (PR #1~#16 + 기능 검증) 결과 반영하여 업데이트, 2026-06-11/12 publish-prep + audit 보강 + v0.1.0-beta.3 cut + main sync (PR #21~#25) 반영*
 *Original 대화 내역은 Claude.ai 웹의 "Otori → AI DevSeed" 대화에 보관됨*
