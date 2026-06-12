@@ -200,15 +200,15 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 ### 무료 (Free Tier) - 현재
 - 모든 기본 템플릿 (base + mobile-rn overlay + web-react overlay)
 - 핵심 슬래시 명령 8개 (`/daily`, `/idea`, `/add-decision`, `/handoff`, `/retro`, `/review`, `/explore`, `/test-plan`) + 템플릿별 1개씩 (`/new-screen`, `/new-page`)
+- 라벨 setup 스크립트 (17 labels, in `templates/base/.github/setup-labels.sh`)
 - 문서/워크플로우 셋업 + Branch Protection 가이드 (in workflow-guide.md)
 - CONTRIBUTING.md (베타 contributors 온보딩)
 
-### 유료 (Pro Tier - $29) - 추후 구현
-- 추가 슬래시 명령 12+
-- 모바일/웹 프리미엄 템플릿
-- Excel WBS, 간트차트 생성기
-- 자동화 스크립트
-- 이메일 지원
+### 유료 (Pro Tier - $19) - MVP 스펙 확정 (`docs/pro-tier-mvp-plan.md`)
+- 추가 슬래시 명령 **12개** (정수, 예: `/scope`, `/release`, `/changelog-entry`, `/spike`, `/postmortem`, `/migration`, `/refactor-plan`, `/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary`, `/timebox`)
+- ADR scenario template **10개** (state mgmt, auth, DB, CSS, API style, monorepo, deploy, testing, errors, observability)
+- 배포: 이 repo의 `pro/` 디렉토리 (단일 repo, Public). npm tarball에선 구조적으로 제외 (`packages/cli/` 밖). Gumroad zip은 "큐레이션 + 업데이트 + 후원" 패키지 — 콘텐츠는 GitHub에서 공개적으로 보임 (open-source pricing, shadcn/ui · Tailwind UI · Excalidraw 모델)
+- **deferred (v0.2+ 후보)**: Excel WBS, 간트차트 SVG, wireframe 템플릿, 프리미엄 코드 템플릿, 이메일 지원 — Free 시장 검증 후 재평가
 
 ### 가이드북 ($39) - Otori MVP 출시 후
 - "60 Days Building Otori" 실전 케이스 스터디

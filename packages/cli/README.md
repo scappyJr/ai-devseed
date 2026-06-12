@@ -120,7 +120,7 @@ claude
 
 ## 🆚 Free vs Pro
 
-| Feature | Free | Pro ($29) |
+| Feature | Free | Pro ($19) |
 |---------|------|-----------|
 | **Core Templates** | ✅ | ✅ |
 | Folder structure | ✅ | ✅ |
@@ -129,16 +129,12 @@ claude
 | Web template (React + Vite) | ✅ | ✅ |
 | Basic ADR templates | ✅ | ✅ |
 | 8 essential slash commands | ✅ | ✅ |
+| Label setup script (17 labels) | ✅ | ✅ |
 | GitHub setup guide | ✅ | ✅ |
 | Markdown WBS | ✅ | ✅ |
 | **Pro Features** | | |
-| 15+ extended slash commands | ❌ | ✅ |
-| Excel WBS with formulas | ❌ | ✅ |
-| Gantt chart SVG generator | ❌ | ✅ |
+| 12 extended slash commands | ❌ | ✅ |
 | 10 ADR scenario templates | ❌ | ✅ |
-| Auto-setup scripts (labels, etc) | ❌ | ✅ |
-| Wireframe templates | ❌ | ✅ |
-| Email support (3 months) | ❌ | ✅ |
 
 [**Get Pro →**](https://gumroad.com/ai-devseed-pro) *(Coming soon)*
 
