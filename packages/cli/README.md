@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/badge/npm-v0.1.0--beta-orange)](https://www.npmjs.com/package/ai-devseed)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/status-beta-yellow)](.)
+[![Status](https://img.shields.io/badge/status-beta-yellow)](https://github.com/scappyJr/ai-devseed)
 
 **AI DevSeed** is a project starter kit designed for solo developers who collaborate with AI assistants like Claude Code. In one command, get a fully-structured project with documentation, workflow guides, ADR templates, and Claude-ready configurations.
 
@@ -15,7 +15,7 @@ npx ai-devseed init my-app
 That's it. Your project is ready in 30 seconds. ✨
 
 <p align="center">
-  <img src="docs/images/demo.png" alt="AI DevSeed CLI: interactive prompts and success output" width="720">
+  <img src="https://raw.githubusercontent.com/scappyJr/ai-devseed/main/docs/images/demo.png" alt="AI DevSeed CLI: interactive prompts and success output" width="720">
 </p>
 
 ---
@@ -157,8 +157,8 @@ The complete journey of building a real app with AI assistance:
 
 ## 📚 Documentation
 
-- [Getting Started](docs/getting-started.md) - Your first project in 5 minutes
-- [Workflow Guide](packages/cli/templates/base/docs/workflow-guide.md) - Preview of the daily workflow your bootstrapped project gets
+- [Getting Started](https://github.com/scappyJr/ai-devseed/blob/main/docs/getting-started.md) - Your first project in 5 minutes
+- [Workflow Guide](https://github.com/scappyJr/ai-devseed/blob/main/packages/cli/templates/base/docs/workflow-guide.md) - Preview of the daily workflow your bootstrapped project gets
 
 Philosophy is covered in the [💡 Philosophy](#-philosophy) section below.
 
@@ -209,13 +209,13 @@ This is a beta project! Feedback is incredibly valuable.
 
 - 🐛 **Found a bug?** [Open an issue](https://github.com/scappyJr/ai-devseed/issues)
 - 💡 **Have an idea?** [Start a discussion](https://github.com/scappyJr/ai-devseed/discussions)
-- 🎨 **Want to add a template?** See [CONTRIBUTING.md](CONTRIBUTING.md) for branch flow, commit conventions, and local setup. PRs welcome.
+- 🎨 **Want to add a template?** See [CONTRIBUTING.md](https://github.com/scappyJr/ai-devseed/blob/main/CONTRIBUTING.md) for branch flow, commit conventions, and local setup. PRs welcome.
 
 ---
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE) for details.
+MIT License - See [LICENSE](https://github.com/scappyJr/ai-devseed/blob/main/LICENSE) for details.
 
 The Free tier is fully open source. Pro tier templates are commercially licensed.
 

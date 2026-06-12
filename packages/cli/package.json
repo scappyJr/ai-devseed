@@ -1,6 +1,6 @@
 {
   "name": "ai-devseed",
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0-beta.3",
   "description": "🌱 Plant the seed for AI-collaborative solo development",
   "keywords": [
     "ai",
@@ -16,12 +16,16 @@
   "bugs": {
     "url": "https://github.com/scappyJr/ai-devseed/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scappyJr/ai-devseed.git",
+    "directory": "packages/cli"
+  },
   "license": "MIT",
   "author": "scappyJr",
   "type": "module",
-  "main": "src/index.js",
   "bin": {
-    "ai-devseed": "./bin/ai-devseed.js"
+    "ai-devseed": "bin/ai-devseed.js"
   },
   "files": [
     "bin/",
