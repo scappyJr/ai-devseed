@@ -207,7 +207,7 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 ### 유료 (Pro Tier - $19) - MVP 스펙 확정 (`docs/pro-tier-mvp-plan.md`)
 - 추가 슬래시 명령 **12개** (정수, 예: `/scope`, `/release`, `/changelog-entry`, `/spike`, `/postmortem`, `/migration`, `/refactor-plan`, `/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary`, `/timebox`)
 - ADR scenario template **10개** (state mgmt, auth, DB, CSS, API style, monorepo, deploy, testing, errors, observability)
-- Gumroad zip 배포, 별도 Private repo `scappyJr/ai-devseed-pro`
+- 배포: 이 repo의 `pro/` 디렉토리 (단일 repo, Public). npm tarball에선 구조적으로 제외 (`packages/cli/` 밖). Gumroad zip은 "큐레이션 + 업데이트 + 후원" 패키지 — 콘텐츠는 GitHub에서 공개적으로 보임 (open-source pricing, shadcn/ui · Tailwind UI · Excalidraw 모델)
 - **deferred (v0.2+ 후보)**: Excel WBS, 간트차트 SVG, wireframe 템플릿, 프리미엄 코드 템플릿, 이메일 지원 — Free 시장 검증 후 재평가
 
 ### 가이드북 ($39) - Otori MVP 출시 후
