@@ -6,6 +6,10 @@ All notable changes to AI DevSeed.
 
 ## [Unreleased]
 
+### Changed
+- **Pro tier scope narrowed to MVP** per `docs/pro-tier-mvp-plan.md`. README "Free vs Pro" table (root + `packages/cli/README.md`) drops 5 aspirational rows (Excel WBS, Gantt SVG, wireframe templates, auto-setup scripts, email support) — those are deferred until Free produces enough signal to justify the build cost. Pro now lists exactly **12 extended slash commands + 10 ADR scenario templates**. Pro price $29 → $19. HANDOFF Pro section reflects the same scope cut.
+- Free tier row added to the pricing table: **Label setup script (17 labels)** — was promised in "GitHub Integration" section but missing from the Free/Pro matrix.
+
 ---
 
 ## [0.1.0-beta.3] · 2026-06-11
