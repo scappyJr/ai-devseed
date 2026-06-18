@@ -53,11 +53,14 @@ my-app/
 ├── .claude/
 │   ├── settings.json      ← Permissions & rules
 │   └── commands/          ← Custom slash commands
+├── .github/               ← Issue templates + label setup script
 ├── docs/
 │   ├── architecture.md
 │   ├── decisions/         ← ADR (Architecture Decision Records)
+│   ├── ideas/             ← Idea management system
 │   ├── journal/           ← Daily work logs
-│   └── ideas/             ← Idea management system
+│   ├── retrospective/     ← Weekly retrospectives (used by /retro)
+│   └── workflow-guide.md  ← Daily workflow + Git + Branch Protection
 └── wbs/                   ← Work breakdown structure
 ```
 
@@ -68,10 +71,10 @@ my-app/
 - **Single source of truth** philosophy baked in
 
 ### 📋 Project Management Tools
-- WBS (Work Breakdown Structure) templates
+- WBS (Work Breakdown Structure) checklist
 - Idea management system (Inbox / Big Ideas / GitHub Issues)
 - ADR templates for documenting decisions
-- Daily journal templates
+- Daily journal template
 
 ### 🐙 GitHub Integration
 - Issue templates (Bug / Feature / Task)
