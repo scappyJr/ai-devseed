@@ -76,11 +76,11 @@ Detailed spec: [`../docs/pro-tier-mvp-plan.md`](../docs/pro-tier-mvp-plan.md#the
 
 | Status | Scenario |
 |---|---|
-| ⏳ | State management library |
-| ⏳ | Auth provider |
-| ⏳ | Database choice |
-| ⏳ | CSS strategy |
-| ⏳ | API style |
+| ✅ | [State management library](./adr-scenarios/001-state-management.md) |
+| ✅ | [Auth provider](./adr-scenarios/002-auth-provider.md) |
+| ✅ | [Database choice](./adr-scenarios/003-database.md) |
+| ✅ | [CSS strategy](./adr-scenarios/004-css-strategy.md) |
+| ✅ | [API style](./adr-scenarios/005-api-style.md) |
 | ⏳ | Monorepo strategy |
 | ⏳ | Deployment platform |
 | ⏳ | Testing strategy |
