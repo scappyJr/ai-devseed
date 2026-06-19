@@ -1,0 +1,47 @@
+AI DevSeed Pro — License
+
+Copyright (c) 2026 scappyJr
+
+The AI DevSeed Pro tier is licensed for personal and small-team use, subject
+to the terms below. This is NOT the MIT License that covers the AI DevSeed
+Free tier; the Free tier's MIT terms do not extend to the contents of this
+`pro/` folder.
+
+PERMITTED
+
+- Use the Pro tier templates in any number of projects you or your team
+  build, commercial or non-commercial.
+- Modify the templates locally for your projects.
+- Reference Pro templates in public posts, screenshots, or tutorials.
+
+NOT PERMITTED
+
+- Resell, sublicense, or redistribute the Pro bundle (zip, archive, or any
+  curated subset) to third parties, paid or free.
+- Mirror the `pro/` folder contents to a separate public location with the
+  intent of bypassing the Gumroad purchase / sponsorship channel.
+- Remove this license header from redistributed copies (in the case of
+  permitted personal forks).
+
+NOTE ON SOURCE VISIBILITY
+
+The Pro source lives in a public repository as a matter of practical
+openness. "Looking is fine" — reading, learning from, or copying a single
+template into your own project is within the spirit of the license.
+"Redistributing the curated bundle" is what this license prohibits.
+
+NO WARRANTY
+
+The Pro templates are provided "as is", without warranty of any kind,
+express or implied. The maintainer is not liable for any damages arising
+from use.
+
+QUESTIONS
+
+Open an issue or discussion at https://github.com/scappyJr/ai-devseed.
+
+---
+
+This license is short and human-readable on purpose. It is not a substitute
+for legal advice. If your organization requires a formal license review,
+contact the maintainer.
