@@ -20,13 +20,14 @@ The Pro tier ships on its own cadence as a Gumroad zip release tagged
 - **Slash command set 2/3** — `/spike`, `/postmortem`, `/migration`, `/refactor-plan` (8 of 12)
 - **Slash command set 3/3** — `/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary` (**12 of 12 ✓**)
 - **ADR scenario set 1/2** — state management, auth provider, database, CSS strategy, API style (5 of 10)
+- **ADR scenario set 2/2** — monorepo, deployment, testing, error handling, observability (**10 of 10 ✓**)
 
 ### Building toward `pro-v0.1.0`
 
-- 5 remaining ADR scenarios (1 more PR):
-  set 2/2 (monorepo, deployment, testing, errors, observability)
-- Pro README finalize (install + indexes + sponsor framing)
+- Pro README finalize (install + indexes finalized + sponsor framing)
 - `scripts/build-pro-zip.sh` — packages `pro/` into `ai-devseed-pro-vX.Y.Z.zip`
+
+All content is now in place. Remaining work is packaging.
 
 See [`../docs/pro-tier-mvp-plan.md`](../docs/pro-tier-mvp-plan.md) for the full build sequence.
 
