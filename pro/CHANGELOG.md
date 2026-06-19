@@ -18,11 +18,10 @@ The Pro tier ships on its own cadence as a Gumroad zip release tagged
 - Skeleton folder layout (`README.md`, `LICENSE`, `CHANGELOG.md`, `commands/`, `adr-scenarios/`)
 - **Slash command set 1/3** — `/scope`, `/timebox`, `/release`, `/changelog-entry` (4 of 12)
 - **Slash command set 2/3** — `/spike`, `/postmortem`, `/migration`, `/refactor-plan` (8 of 12)
+- **Slash command set 3/3** — `/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary` (**12 of 12 ✓**)
 
 ### Building toward `pro-v0.1.0`
 
-- 4 remaining slash commands (1 more PR):
-  set 3/3 (`/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary`)
 - 10 ADR scenario starter templates (incoming, batched across 2 PRs)
 - Pro README finalize (install + indexes + sponsor framing)
 - `scripts/build-pro-zip.sh` — packages `pro/` into `ai-devseed-pro-vX.Y.Z.zip`

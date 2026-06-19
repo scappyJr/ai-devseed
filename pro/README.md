@@ -63,10 +63,10 @@ See [LICENSE](./LICENSE) for permitted use.
 | ✅ | [`/postmortem`](./commands/postmortem.md) | Incident postmortem template (timeline, root cause, actions, lessons) |
 | ✅ | [`/migration`](./commands/migration.md) | DB/data migration plan with explicit rollback |
 | ✅ | [`/refactor-plan`](./commands/refactor-plan.md) | Staged refactor: current → target with safe intermediate states |
-| ⏳ | `/dependency-audit` | Outdated + vulnerable + unused deps with action items |
-| ⏳ | `/onboarding` | Onboarding doc for new contributor (or future-you on a stale codebase) |
-| ⏳ | `/diagram` | Mermaid diagram for the current folder / feature / data flow |
-| ⏳ | `/feedback-summary` | Aggregate user feedback (Issues + Discussions + journal) into themes |
+| ✅ | [`/dependency-audit`](./commands/dependency-audit.md) | Outdated + vulnerable + unused deps with action items |
+| ✅ | [`/onboarding`](./commands/onboarding.md) | Onboarding doc for new contributor (or future-you on a stale codebase) |
+| ✅ | [`/diagram`](./commands/diagram.md) | Mermaid diagram for the current folder / feature / data flow |
+| ✅ | [`/feedback-summary`](./commands/feedback-summary.md) | Aggregate user feedback (Issues + Discussions + journal) into themes |
 
 Detailed spec: [`../docs/pro-tier-mvp-plan.md`](../docs/pro-tier-mvp-plan.md#the-12-pro-slash-commands)
 
