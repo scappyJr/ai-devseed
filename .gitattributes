@@ -1,0 +1,4 @@
+# Shell scripts must use LF regardless of platform checkout.
+# Windows autocrlf would otherwise CRLF these and break execution on macOS/Linux.
+*.sh text eol=lf
+*.bash text eol=lf
