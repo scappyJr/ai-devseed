@@ -4,7 +4,7 @@
 
 ---
 
-## 🔄 다음 세션 시작하기 (Last sync: 2026-06-12)
+## 🔄 다음 세션 시작하기 (Last sync: 2026-06-19)
 
 ### 다른 환경에서 이어 작업하려면
 
@@ -90,7 +90,40 @@ claude
 - PR #24 `chore/v0.1.0-beta.3` → develop: `package.json` 버전 `0.1.0-beta.2` → `0.1.0-beta.3`. CHANGELOG `[Unreleased]` 내용을 `[0.1.0-beta.3] · 2026-06-11`로 cut + publish-prep 변경분 backfill. `package-lock.json` 재생성 (beta.1에 멈춰있던 것 → beta.3).
 - PR #25 release sync (`develop` → `main`): **9 commits, 12 files, +402 -33**. PR #21~#24 누적 + Phase 6 HANDOFF doc.
 
-**다음 액션** (출시 준비 100% 완료 — main이 publish-ready 상태):
+**Phase 8 — Pro tier MVP 기획 + 콘텐츠 빌드 + 패키징** (2026-06-13~19, PR #26~#37)
+
+기획 + 마케팅 sync (PR #26~#29):
+- PR #26 `plan/pro-tier-mvp` → develop: `docs/pro-tier-mvp-plan.md` 신규. Pro MVP scope 확정 (12 commands + 10 ADR scenarios, $19). 기존 README의 aspirational 7가지 claims (15+ commands, Excel WBS, 간트차트 SVG, wireframe, 이메일 지원 등)을 절반으로 잘라내고 ship-가능한 정수로 정리.
+- PR #27 (재머지) → develop: 배포 모델을 **단일 repo open-source pricing**으로 전환. `pro/`를 repo root에 두고 npm tarball 구조적 제외, Gumroad zip은 "큐레이션 + 업데이트 + 후원"으로 프레이밍 (shadcn/ui · Tailwind UI · Excalidraw 모델). 별도 Private repo 안은 폐기.
+- PR #28 `docs/pro-tier-marketing-sync` → develop: README + HANDOFF + `packages/cli/README` 3 surfaces를 새 Pro scope + 단일 repo 모델에 맞춰 sync.
+- PR #29 release sync `develop` → `main`: 위 3 PR + Phase 7 HANDOFF narrative.
+
+README 폴리시 + Pro skeleton (PR #30~#31):
+- PR #30 `fix/readme-audit-polish` → develop: README↔실제 대조 audit 4건 — `.github/`와 `docs/retrospective/`가 base 템플릿에는 있는데 illustrative tree에서 누락. "WBS templates" / "Daily journal templates" 복수 표현이 실제 1개 파일과 불일치. 두 README (root + `packages/cli/`) 동기 수정.
+- PR #31 `feat/pro-skeleton` → develop: `pro/` 디렉토리 신규 — `README.md` (open-source-pricing rationale), `LICENSE` (NOT MIT, personal/team use), `CHANGELOG.md` (Keep a Changelog format), `commands/.gitkeep`, `adr-scenarios/.gitkeep`. **구조적 invariant 검증**: `npm pack --dry-run` 결과 40 files 그대로 (pro/ 0 매치) — `pro/`가 `packages/cli/` 밖이라 `files` 배열로 닿지 않음.
+
+12 Pro slash 명령 (PR #32~#34):
+- PR #32 `feat/pro-commands-1`: `/scope`, `/timebox`, `/release`, `/changelog-entry` (4 of 12). 스코핑 + 출시 의례.
+- PR #33 `feat/pro-commands-2`: `/spike`, `/postmortem`, `/migration`, `/refactor-plan` (8 of 12). 조사 + 인시던트 + 마이그레이션 + 리팩터.
+- PR #34 `feat/pro-commands-3`: `/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary` (12 of 12 ✓). 의존성 헬스 + 온보딩 + Mermaid 다이어그램 + 피드백 종합.
+- 각 명령 포맷: YAML frontmatter + When/How/Template/Rules + 인라인 마크다운 템플릿. Free 8개 명령과 동일. Pro-only tooling 의존성 0건.
+
+10 ADR scenario 시작 템플릿 (PR #35~#36):
+- PR #35 `feat/pro-adr-scenarios-1`: `001-state-management`, `002-auth-provider`, `003-database`, `004-css-strategy`, `005-api-style` (5 of 10).
+- PR #36 `feat/pro-adr-scenarios-2`: `006-monorepo-strategy`, `007-deployment-platform`, `008-testing-strategy`, `009-error-handling`, `010-observability` (10 of 10 ✓).
+- 각 시나리오: Context (6+ 트레이드오프) + Options (5+ 옵션 with pros/cons) + Tradeoff matrix (6 axes) + 빈 Decision/Reasoning/Consequences. Title이 `ADR NNN` placeholder — 사용자가 자기 repo의 `docs/decisions/`로 복사하며 renumber.
+
+패키징 (PR #37):
+- PR #37 `feat/pro-readme-finalize` → develop:
+  1. `pro/README.md` finalize — 상태 표시 "in progress" → "content + packaging complete; awaiting Gumroad listing". Install placeholder 제거 + 실제 2-path 안내 (Gumroad zip / manual copy). Adoption notes (ADR 번호 renumber) + Quick start 3개 (`/scope`, `/release`, `/onboarding`).
+  2. `scripts/build-pro-zip.sh` 추가 — tag-driven (`pro-v*` HEAD) or 명시적 버전 인자. `pro/` 구조 검증, `zip` → Python `shutil.make_archive` fallback (Windows 기본엔 `zip` 없음). 출력 `dist/ai-devseed-pro-vX.Y.Z.zip` (gitignored). Size + SHA256 보고. **로컬 검증**: `0.1.0-test` 빌드 → 60K, 25 files (3 root + 12 commands + 10 scenarios), Python zipfile로 valid 확인.
+  3. 루트 `.gitattributes` 신규 — `*.sh`/`*.bash` LF 강제. Phase 7에서 base 템플릿에 적용한 것과 같은 패턴, 이번엔 root 범위.
+
+**결과**: `pro-v0.1.0` 콘텐츠 + 패키징 100% 완료. 남은 외부 작업은 (a) develop → main release sync, (b) `git tag pro-v0.1.0`, (c) Gumroad product 셋업 + zip 업로드 + 페이지 카피, (d) root README "Get Pro" CTA의 "Coming soon" → 실제 Gumroad URL.
+
+**다음 액션** (Free + Pro 양쪽 ready; 남은 건 외부 액션 위주):
+
+### A. Free 출시 트랙
 
 1. **Public 전환** — Settings → General → Danger Zone → Change repository visibility → Make public → 2FA 확인
 2. **Branch Protection 적용** (Public이면 무료) — Settings → Branches → Add branch protection rule on `main`:
@@ -108,10 +141,30 @@ claude
 4. **Reddit/Disquiet 출시 글** (`docs/reddit-launch-templates.md` 참고) — Claude가 draft 도움 가능. publish 후 실제 npm URL 확보 후 진행 권장.
 5. **첫 사용자 피드백 대응** — Issue/Discussion 응답, hyphen-leading-name 결함 등 patch 후보 정리.
 
+### B. Pro 출시 트랙 (콘텐츠 + 패키징 완료)
+
+6. **develop → main release sync** — 현재 develop이 main보다 16 commits 앞섬 (Phase 8 전체). 전부 docs/Pro/scripts라 conflict 없고 npm tarball 영향 없음. Claude 단독 가능.
+7. **`pro-v0.1.0` tag + zip 빌드**:
+   - `git tag pro-v0.1.0 -m "Pro v0.1.0" && git push origin pro-v0.1.0`
+   - `bash scripts/build-pro-zip.sh` → `dist/ai-devseed-pro-v0.1.0.zip` (60K, 25 files, SHA256 출력)
+8. **Gumroad product 셋업** — 본인:
+   - 제품 만들기, price `$19`
+   - `ai-devseed-pro-v0.1.0.zip` 업로드
+   - 페이지 카피: `pro/README.md`의 "Why source-visible (Open-source pricing)" + Reference 섹션 사용
+   - First-50-buyer discount `$19→$9` 검토 (`docs/pro-tier-mvp-plan.md` § Open questions)
+9. **Root README "Get Pro" CTA → Gumroad URL** — Gumroad URL 확보 후 "Coming soon"을 실제 링크로 (root README 2 spot + 푸터 1 spot). Claude가 URL 받으면 PR 생성.
+10. **Pro 출시 announcement** — Free 출시와 동시 또는 직후. Reddit (r/SideProject, r/ClaudeAI), Dev.to. Claude draft 가능.
+
+### 권장 순서
+
+Free 트랙 (1~3) → Pro 트랙 (6~9) → 양쪽 announcement (4/10). Pro 트랙 6 (release sync)은 언제 해도 무해하니 다음 세션 첫 작업으로 두면 main이 최신 상태가 됨.
+
 ### 주의사항
 
 - ⚠️ 로컬 Claude 메모리(`~/.claude/projects/.../memory/`)는 다른 환경에 동기화 안 됨. 새 환경에선 이 문서 + memory 인덱스가 핵심.
 - ⚠️ npm publish와 Reddit 출시는 **Public 전환 후**에만 진행.
+- ⚠️ **`pro/`는 npm tarball에서 구조적으로 제외**됨 (`packages/cli/` 밖). 새 파일을 패키지 surface에 추가할 때 `cd packages/cli && npm pack --dry-run`으로 정기 확인 — 40 files 유지가 invariant. 의도치 않게 pro/가 끌려오면 publish 차단급 결함.
+- ℹ️ Pro zip 빌드 산출물은 `dist/` (gitignored). `scripts/build-pro-zip.sh`는 `zip` → Python `shutil.make_archive` fallback이라 Windows에서도 동작 (`zip` 미설치 환경 포함).
 - ⚠️ **`gh` CLI 인증 fragile** — 세션마다 `& "C:\Program Files\GitHub CLI\gh.exe" auth status`로 먼저 확인. unauth 상태면 `git push -u` 후 출력되는 URL로 웹 PR 생성 (B방식). 재인증: `! "C:\Program Files\GitHub CLI\gh.exe" auth login`.
 - ⚠️ **PR 생성 시 base 브랜치 주의** — GitHub 기본은 `main`. CLAUDE.md 흐름(`feature/* → develop`)을 따르려면 PR 만들 때 base를 **develop으로 명시 변경**. (PR #1, PR #12 두 번 실수로 main에 머지된 이력.)
 - ⚠️ 루트 `package-lock.json` 재발 주의 — npm 명령은 항상 `packages/cli/` 안에서. 루트에서 잘못 돌리면 빈 lockfile 생김.
@@ -183,15 +236,22 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [x] 글로벌 git config noreply 적용 (사용자 직접)
 - [x] GitHub 프로필 Name → scappyJr (사용자 직접)
 - [x] E2E 기능 테스트 (3 템플릿 + 11개 슬래시 명령)
+- [x] Pro MVP plan 작성 + open-source pricing 결정 (PR #26~#28)
+- [x] Pro 콘텐츠 22 markdown 빌드 (PR #31~#36 — skeleton + 12 commands + 10 ADR scenarios)
+- [x] Pro 패키징 (Pro README finalize + `scripts/build-pro-zip.sh` + root `.gitattributes`; PR #37)
 - [ ] **Public 전환** (Settings → General → Change visibility)
 - [ ] Branch Protection 적용 (Public 후 무료)
 - [ ] npm 계정 + 2FA → `npm publish --tag beta`
-- [ ] Reddit/Disquiet 출시 글
+- [ ] develop → main release sync (16 commits, Pro 콘텐츠) — 어느 시점이든 가능
+- [ ] `git tag pro-v0.1.0` + `bash scripts/build-pro-zip.sh`
+- [ ] Gumroad product 셋업 + zip 업로드 + $19 가격
+- [ ] Root README "Get Pro" CTA → 실제 Gumroad URL
+- [ ] Reddit/Disquiet 출시 글 (Free + Pro)
 - [ ] 첫 사용자 피드백 받기
 
 ### 미완성 (의도적)
 - 자동 테스트 없음 (수동 테스트로 충분)
-- Pro 티어 기능 미구현 (먼저 무료 검증)
+- Pro CLI 자동 설치 명령 없음 (`ai-devseed install-pro <zip>` 등) — MVP는 수동 copy. 시장 검증 후 재평가.
 
 ## 💰 수익화 전략
 
@@ -204,10 +264,11 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - 문서/워크플로우 셋업 + Branch Protection 가이드 (in workflow-guide.md)
 - CONTRIBUTING.md (베타 contributors 온보딩)
 
-### 유료 (Pro Tier - $19) - MVP 스펙 확정 (`docs/pro-tier-mvp-plan.md`)
-- 추가 슬래시 명령 **12개** (정수, 예: `/scope`, `/release`, `/changelog-entry`, `/spike`, `/postmortem`, `/migration`, `/refactor-plan`, `/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary`, `/timebox`)
-- ADR scenario template **10개** (state mgmt, auth, DB, CSS, API style, monorepo, deploy, testing, errors, observability)
-- 배포: 이 repo의 `pro/` 디렉토리 (단일 repo, Public). npm tarball에선 구조적으로 제외 (`packages/cli/` 밖). Gumroad zip은 "큐레이션 + 업데이트 + 후원" 패키지 — 콘텐츠는 GitHub에서 공개적으로 보임 (open-source pricing, shadcn/ui · Tailwind UI · Excalidraw 모델)
+### 유료 (Pro Tier - $19) — **콘텐츠 + 패키징 완료** (`pro/` + `docs/pro-tier-mvp-plan.md`)
+- 슬래시 명령 12개 ✅ — `/scope`, `/timebox`, `/release`, `/changelog-entry`, `/spike`, `/postmortem`, `/migration`, `/refactor-plan`, `/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary`
+- ADR scenario 시작 템플릿 10개 ✅ — state mgmt, auth, DB, CSS, API style, monorepo, deploy, testing, errors, observability
+- 배포: 이 repo의 `pro/` 디렉토리 (단일 Public repo). npm tarball에선 구조적으로 제외 (`packages/cli/` 밖). Gumroad zip은 `scripts/build-pro-zip.sh`로 빌드 (60K, 25 files). 콘텐츠는 GitHub에서 공개적으로 보임 (open-source pricing, shadcn/ui · Tailwind UI · Excalidraw 모델).
+- **남은 작업**: `pro-v0.1.0` tag + zip 빌드 → Gumroad product 셋업 → page copy → root README CTA 업데이트. 본인 액션 위주.
 - **deferred (v0.2+ 후보)**: Excel WBS, 간트차트 SVG, wireframe 템플릿, 프리미엄 코드 템플릿, 이메일 지원 — Free 시장 검증 후 재평가
 
 ### 가이드북 ($39) - Otori MVP 출시 후
@@ -318,5 +379,5 @@ docs/reddit-launch-templates.md를 봐. r/SideProject용 글 다듬어줘.
 
 ---
 
-*이 문서는 2026-04-29 작성, 2026-05-11/12 GitHub 셋업 + CLI 가다듬기 + 출시 준비 (PR #1~#16 + 기능 검증) 결과 반영하여 업데이트, 2026-06-11/12 publish-prep + audit 보강 + v0.1.0-beta.3 cut + main sync (PR #21~#25) 반영*
+*이 문서는 2026-04-29 작성, 2026-05-11/12 GitHub 셋업 + CLI 가다듬기 + 출시 준비 (PR #1~#16 + 기능 검증) 결과 반영하여 업데이트, 2026-06-11/12 publish-prep + audit 보강 + v0.1.0-beta.3 cut + main sync (PR #21~#25) 반영, 2026-06-13~19 Pro tier MVP 기획 + 콘텐츠 22 markdown 빌드 + 패키징 (PR #26~#37) 반영*
 *Original 대화 내역은 Claude.ai 웹의 "Otori → AI DevSeed" 대화에 보관됨*
