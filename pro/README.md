@@ -59,10 +59,10 @@ See [LICENSE](./LICENSE) for permitted use.
 | ✅ | [`/timebox`](./commands/timebox.md) | Set/check a timebox on current focused work |
 | ✅ | [`/release`](./commands/release.md) | Pre-publish checklist (version bump, CHANGELOG cut, tag, smoke test) |
 | ✅ | [`/changelog-entry`](./commands/changelog-entry.md) | Generate a CHANGELOG section from `git log` since last tag |
-| ⏳ | `/spike` | Open a research spike (question + timebox + findings skeleton) |
-| ⏳ | `/postmortem` | Incident postmortem template (timeline, root cause, actions, lessons) |
-| ⏳ | `/migration` | DB/data migration plan with explicit rollback |
-| ⏳ | `/refactor-plan` | Staged refactor: current → target with safe intermediate states |
+| ✅ | [`/spike`](./commands/spike.md) | Open a research spike (question + timebox + findings skeleton) |
+| ✅ | [`/postmortem`](./commands/postmortem.md) | Incident postmortem template (timeline, root cause, actions, lessons) |
+| ✅ | [`/migration`](./commands/migration.md) | DB/data migration plan with explicit rollback |
+| ✅ | [`/refactor-plan`](./commands/refactor-plan.md) | Staged refactor: current → target with safe intermediate states |
 | ⏳ | `/dependency-audit` | Outdated + vulnerable + unused deps with action items |
 | ⏳ | `/onboarding` | Onboarding doc for new contributor (or future-you on a stale codebase) |
 | ⏳ | `/diagram` | Mermaid diagram for the current folder / feature / data flow |
