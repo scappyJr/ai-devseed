@@ -55,10 +55,10 @@ See [LICENSE](./LICENSE) for permitted use.
 
 | Status | Command | One-liner |
 |---|---|---|
-| ⏳ | `/scope` | Bound a task before starting — timebox + DoD + out-of-scope |
-| ⏳ | `/timebox` | Set/check a timebox on current focused work |
-| ⏳ | `/release` | Pre-publish checklist (version bump, CHANGELOG cut, tag, smoke test) |
-| ⏳ | `/changelog-entry` | Generate a CHANGELOG section from `git log` since last tag |
+| ✅ | [`/scope`](./commands/scope.md) | Bound a task before starting — timebox + DoD + out-of-scope |
+| ✅ | [`/timebox`](./commands/timebox.md) | Set/check a timebox on current focused work |
+| ✅ | [`/release`](./commands/release.md) | Pre-publish checklist (version bump, CHANGELOG cut, tag, smoke test) |
+| ✅ | [`/changelog-entry`](./commands/changelog-entry.md) | Generate a CHANGELOG section from `git log` since last tag |
 | ⏳ | `/spike` | Open a research spike (question + timebox + findings skeleton) |
 | ⏳ | `/postmortem` | Incident postmortem template (timeline, root cause, actions, lessons) |
 | ⏳ | `/migration` | DB/data migration plan with explicit rollback |
