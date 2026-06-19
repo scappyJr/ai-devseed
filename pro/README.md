@@ -81,11 +81,11 @@ Detailed spec: [`../docs/pro-tier-mvp-plan.md`](../docs/pro-tier-mvp-plan.md#the
 | ✅ | [Database choice](./adr-scenarios/003-database.md) |
 | ✅ | [CSS strategy](./adr-scenarios/004-css-strategy.md) |
 | ✅ | [API style](./adr-scenarios/005-api-style.md) |
-| ⏳ | Monorepo strategy |
-| ⏳ | Deployment platform |
-| ⏳ | Testing strategy |
-| ⏳ | Error handling pattern |
-| ⏳ | Observability stack |
+| ✅ | [Monorepo strategy](./adr-scenarios/006-monorepo-strategy.md) |
+| ✅ | [Deployment platform](./adr-scenarios/007-deployment-platform.md) |
+| ✅ | [Testing strategy](./adr-scenarios/008-testing-strategy.md) |
+| ✅ | [Error handling pattern](./adr-scenarios/009-error-handling.md) |
+| ✅ | [Observability stack](./adr-scenarios/010-observability.md) |
 
 Each ships with: context (3+ tradeoffs pre-listed), options (3+ contenders with one-line cons), tradeoff matrix (4+ evaluation axes), empty decision section for you to fill.
 
