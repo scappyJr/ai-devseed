@@ -21,13 +21,11 @@ The Pro tier ships on its own cadence as a Gumroad zip release tagged
 - **Slash command set 3/3** — `/dependency-audit`, `/onboarding`, `/diagram`, `/feedback-summary` (**12 of 12 ✓**)
 - **ADR scenario set 1/2** — state management, auth provider, database, CSS strategy, API style (5 of 10)
 - **ADR scenario set 2/2** — monorepo, deployment, testing, error handling, observability (**10 of 10 ✓**)
+- Pro README finalized — real install instructions (two paths: Gumroad zip vs. manual copy), adoption notes, quick-start commands, reference framing
+- `scripts/build-pro-zip.sh` — tag-driven (`pro-vX.Y.Z`) builder that emits `dist/ai-devseed-pro-vX.Y.Z.zip` with the 25 files (README + LICENSE + CHANGELOG + 12 commands + 10 scenarios). Falls back to Python's zipfile if system `zip` is unavailable.
+- Root `.gitattributes` — forces LF on `*.sh` / `*.bash` so the build script survives Windows checkout
 
-### Building toward `pro-v0.1.0`
-
-- Pro README finalize (install + indexes finalized + sponsor framing)
-- `scripts/build-pro-zip.sh` — packages `pro/` into `ai-devseed-pro-vX.Y.Z.zip`
-
-All content is now in place. Remaining work is packaging.
+**Content + packaging are complete.** Cutting `pro-v0.1.0` and uploading to Gumroad is the only remaining step before the tier is purchasable.
 
 See [`../docs/pro-tier-mvp-plan.md`](../docs/pro-tier-mvp-plan.md) for the full build sequence.
 

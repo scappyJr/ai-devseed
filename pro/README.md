@@ -2,7 +2,7 @@
 
 > Curated extensions for the AI-collaborative solo workflow.
 
-**Status**: `v0.1.0` in progress — commands and ADR scenarios are landing incrementally. See [CHANGELOG.md](./CHANGELOG.md).
+**Status**: `v0.1.0` — content + packaging complete. Awaiting Gumroad listing. See [CHANGELOG.md](./CHANGELOG.md).
 
 [← Back to Free tier](../README.md)
 
@@ -40,14 +40,49 @@ See [LICENSE](./LICENSE) for permitted use.
 
 ## Install
 
-> **Pro v0.1.0 is not yet released.** When it ships, install will be one of:
->
-> 1. **Recommended**: Buy on Gumroad → download zip → unzip into your project root. Commands merge into `.claude/commands/`, ADR scenarios into `docs/decisions/`.
-> 2. **Manual**: clone this repo, copy `pro/commands/*.md` and `pro/adr-scenarios/*.md` into the corresponding folders of your project. Follows the spirit of the license — honor system.
+Two paths give you the exact same 22 files. Pick by preference.
+
+### Path A — Gumroad zip (recommended, supports the project)
+
+> The Gumroad listing for `pro-v0.1.0` is being set up. Link will replace this note once live.
+
+1. Buy on Gumroad → download `ai-devseed-pro-v0.1.0.zip`
+2. Unzip — you'll get a single folder `ai-devseed-pro-v0.1.0/` with `commands/`, `adr-scenarios/`, README, LICENSE, CHANGELOG
+3. Copy into your project:
+   - `commands/*.md` → your project's `.claude/commands/`
+   - `adr-scenarios/*.md` → your project's `docs/decisions/` (renumber as needed — see "Adoption notes" below)
+
+### Path B — Manual copy from this repo
+
+Same files, just copied directly. Honor-system equivalent.
+
+```bash
+# In your project root
+mkdir -p .claude/commands docs/decisions
+
+# Clone or sparse-checkout this repo into a temp dir, then:
+cp /path/to/ai-devseed/pro/commands/*.md .claude/commands/
+cp /path/to/ai-devseed/pro/adr-scenarios/*.md docs/decisions/
+```
+
+### Adoption notes
+
+- **ADR scenario renumbering** — the scenarios ship as `001-` through `010-`. If your project already has ADRs at those numbers, renumber the scenarios as you adopt them (highest existing + 1). The starter content is in the file body, not the filename.
+- **No CLI integration in MVP** — install is manual copy. A future `ai-devseed install-pro <zip>` may automate this; not in v0.1.0.
+
+### Quick start
+
+After install, three commands that pay back quickly:
+
+- **`/scope`** — bound your next task in 30 seconds before opening the editor
+- **`/release`** — generate a pre-publish checklist for your next version bump
+- **`/onboarding`** — produce `docs/onboarding.md` from your existing repo state; useful even on day one
 
 ---
 
-## What's coming (v0.1.0 target)
+## Reference
+
+All 12 commands and 10 ADR scenarios. Click through for the full text of each.
 
 ### Extended slash commands
 
@@ -97,9 +132,9 @@ Each ships with: context (3+ tradeoffs pre-listed), options (3+ contenders with 
 
 ---
 
-## Feedback while we build
+## Feedback
 
-This is a build-in-public skeleton. If you have requests or "I'd pay for X but not Y" reactions, open an issue or discussion on the main repo. The Pro scope is still negotiable until v0.1.0 ships.
+Suggestions, gaps, "I'd pay for X but not Y" reactions — open an issue or discussion on the main repo. The Pro scope is expected to grow within the v0.x line based on actual signal.
 
 - 🐛 [Issues](https://github.com/scappyJr/ai-devseed/issues)
 - 💬 [Discussions](https://github.com/scappyJr/ai-devseed/discussions)
