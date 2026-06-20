@@ -91,22 +91,27 @@ cp "$PRO_DIR/CHANGELOG.md" "$STAGING/"
 cp -r "$PRO_DIR/commands"      "$STAGING/"
 cp -r "$PRO_DIR/adr-scenarios" "$STAGING/"
 
+# Pick a Python that actually runs. On Windows, `python3` is often a Microsoft
+# Store app-execution-alias stub that satisfies `command -v` but exits non-zero
+# without running — so probe each candidate with `--version`, don't just locate it.
+PYBIN=""
+for cand in python3 python py; do
+  if command -v "$cand" >/dev/null 2>&1 && "$cand" --version >/dev/null 2>&1; then
+    PYBIN="$cand"; break
+  fi
+done
+
 # Zip from inside dist/ so paths in the archive are relative to the release folder.
 # Prefer `zip` (Unix standard); fall back to Python's zipfile (cross-platform default).
 if command -v zip >/dev/null 2>&1; then
   ( cd "$DIST_DIR" && zip -rq "$RELEASE_NAME.zip" "$RELEASE_NAME" )
-elif command -v python3 >/dev/null 2>&1; then
-  ( cd "$DIST_DIR" && python3 -c "
-import shutil, sys
-shutil.make_archive('$RELEASE_NAME', 'zip', root_dir='.', base_dir='$RELEASE_NAME')
-" )
-elif command -v python >/dev/null 2>&1; then
-  ( cd "$DIST_DIR" && python -c "
+elif [[ -n "$PYBIN" ]]; then
+  ( cd "$DIST_DIR" && "$PYBIN" -c "
 import shutil
 shutil.make_archive('$RELEASE_NAME', 'zip', root_dir='.', base_dir='$RELEASE_NAME')
 " )
 else
-  echo "ERROR: neither 'zip' nor 'python3'/'python' found in PATH." >&2
+  echo "ERROR: neither 'zip' nor a working 'python3'/'python'/'py' found in PATH." >&2
   echo "Install one of: zip (apt/brew/choco install zip) or Python 3." >&2
   exit 1
 fi
