@@ -19,7 +19,11 @@ _(No changes yet — next bullets go here.)_
 
 ## [0.1.0] · 2026-06-19
 
-**Initial release.** 22 markdown files packaged as `ai-devseed-pro-v0.1.0.zip` (60K, 25 files including README/LICENSE/CHANGELOG). SHA256 published on the GitHub Release for `pro-v0.1.0` and on the Gumroad product page.
+**Initial release.** 22 markdown files packaged as `ai-devseed-pro-v0.1.0.zip` (60K, 25 files including README/LICENSE/CHANGELOG). SHA256 published on the GitHub Release for `pro-v0.1.0` and on the Gumroad product page:
+
+```
+SHA256 (ai-devseed-pro-v0.1.0.zip) = 5a1b8f413e06049cbc3ebc19605399d14f434b2fce74ef32334eff794b0c639c
+```
 
 ### Added
 
