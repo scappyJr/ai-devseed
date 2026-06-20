@@ -121,13 +121,18 @@ README 폴리시 + Pro skeleton (PR #30~#31):
 
 **결과**: `pro-v0.1.0` 콘텐츠 + 패키징 100% 완료. 남은 외부 작업은 (a) develop → main release sync, (b) `git tag pro-v0.1.0`, (c) Gumroad product 셋업 + zip 업로드 + 페이지 카피, (d) root README "Get Pro" CTA의 "Coming soon" → 실제 Gumroad URL.
 
-**Phase 9 — Phase 8 main 반영 + Pro 태그 + 테스트 가이드 + npm 사전검증** (2026-06-19~20, PR #38~#43)
+**Phase 9 — Phase 8 main 반영 + Pro 태그 + 테스트 가이드 + npm 사전검증 + Pro zip 빌드 + draft release** (2026-06-19~20, PR #38~#44)
 - PR #38: 이 HANDOFF의 Phase 8 narrative.
 - PR #39: release sync (`develop` → `main`) — Phase 8 Pro 콘텐츠 전체를 main에 반영.
 - PR #40 `chore/pro-v0.1.0-changelog-cut`: `pro/CHANGELOG.md`를 v0.1.0으로 cut. **`pro-v0.1.0` 태그 생성 완료** (HANDOFF Pro 트랙 7번 태그 부분 ✓).
 - PR #42 `docs/test-guides`: `docs/test-guide-free.md` + `docs/test-guide-pro.md` (Free/Pro 수동 테스트 가이드).
 - PR #43 release sync (`develop` → `main`, 2026-06-20): test guides 반영. 이후 main back-merge로 **develop ↔ main 완전 정렬 (0/0)**.
 - **npm publish 직전 검증** (2026-06-20, `cd packages/cli && npm pack --dry-run`): **40 files invariant 유지**, pro/ 누출 0건, 경고/에러 0건, README.md(7.9kB)+LICENSE(1.1kB) 포함, `bin`/`repository`/`engines` 필드 정상, 엔트리포인트 스모크(`--version`/`list`) 정상. package size 26.7kB / unpacked 71.0kB. **publish 버튼만 남음** (Public 전환 + npm 2FA는 본인).
+- **Pro zip 빌드** (2026-06-20, `bash scripts/build-pro-zip.sh 0.1.0`): `dist/ai-devseed-pro-v0.1.0.zip` (60K, 25 files = root 3 + commands 12 + ADR 10). `python -m zipfile --test` 통과. **SHA256 `5a1b8f413e06049cbc3ebc19605399d14f434b2fce74ef32334eff794b0c639c`**.
+  - **빌드 중 버그 수정** (PR #44): Windows에서 `python3`이 MS Store 앱실행 별칭 스텁으로 잡혀 `command -v`는 통과하지만 실행 시 exit 49로 죽음 → 빌드 차단. `build-pro-zip.sh`가 후보(python3/python/py)를 `--version`으로 실제 실행해보고 동작하는 걸 고르도록 수정.
+  - `pro/CHANGELOG.md` `[0.1.0]` 섹션에 위 SHA256 코드블록 추가.
+- **draft GitHub Release 생성** (2026-06-20, `gh release create pro-v0.1.0 --draft`): title "AI DevSeed Pro v0.1.0", zip asset 첨부 (GitHub 자동 계산 digest = 위 SHA256 일치 검증됨), 본문 = 마케팅 카피 (Free 소개 + 12 commands + 10 ADR + install + open-source-pricing 설명 + SHA256 verify). **본문 링크가 `main` 기준** — 게시는 Public 전환 + (이미 완료된) main sync 후. 게시: `gh release edit pro-v0.1.0 --draft=false`.
+- PR #44 release sync (`develop` → `main`, 2026-06-20): Phase 9 HANDOFF + 스크립트 수정 + SHA256 (3 files). back-merge로 **develop ↔ main 정렬 (0/0)**.
 
 **다음 액션** (Free + Pro 양쪽 ready; 남은 건 외부 액션 위주):
 
@@ -152,9 +157,11 @@ README 폴리시 + Pro skeleton (PR #30~#31):
 ### B. Pro 출시 트랙 (콘텐츠 + 패키징 완료)
 
 6. ✅ **develop → main release sync** — 완료 (Phase 9, PR #39/#43). develop ↔ main 정렬 (0/0).
-7. **`pro-v0.1.0` tag + zip 빌드**:
-   - ✅ `pro-v0.1.0` 태그 생성/푸시 완료 (Phase 9, PR #40).
-   - ⬜ zip 빌드 남음: `bash scripts/build-pro-zip.sh` → `dist/ai-devseed-pro-v0.1.0.zip` (60K, 25 files, SHA256 출력)
+7. ✅ **`pro-v0.1.0` tag + zip 빌드 + draft release** — 모두 완료 (Phase 9):
+   - `pro-v0.1.0` 태그 생성/푸시 (PR #40).
+   - `dist/ai-devseed-pro-v0.1.0.zip` 빌드 (60K, 25 files). SHA256 `5a1b8f413e06049cbc3ebc19605399d14f434b2fce74ef32334eff794b0c639c` (pro/CHANGELOG에 기록).
+   - **draft GitHub Release** 생성 (zip asset 첨부됨). ⬜ 게시만 남음 (Public 전환 후): `gh release edit pro-v0.1.0 --draft=false`. Gumroad URL 확보 시 본문 "buy on Gumroad" 한 줄 교체 권장.
+   - ⚠️ `dist/`는 gitignored — 다른 환경에서 release 게시하려면 `bash scripts/build-pro-zip.sh 0.1.0`으로 zip 재빌드 (deterministic, 같은 SHA256 재현). 단, 인자 `0.1.0` 명시 필요 (HEAD가 `pro-v0.1.0` 태그 커밋이 아니면 tag-driven 모드 실패).
 8. **Gumroad product 셋업** — 본인:
    - 제품 만들기, price `$19`
    - `ai-devseed-pro-v0.1.0.zip` 업로드
