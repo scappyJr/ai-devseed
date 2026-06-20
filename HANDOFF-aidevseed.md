@@ -4,7 +4,7 @@
 
 ---
 
-## 🔄 다음 세션 시작하기 (Last sync: 2026-06-19)
+## 🔄 다음 세션 시작하기 (Last sync: 2026-06-20)
 
 ### 다른 환경에서 이어 작업하려면
 
@@ -121,6 +121,14 @@ README 폴리시 + Pro skeleton (PR #30~#31):
 
 **결과**: `pro-v0.1.0` 콘텐츠 + 패키징 100% 완료. 남은 외부 작업은 (a) develop → main release sync, (b) `git tag pro-v0.1.0`, (c) Gumroad product 셋업 + zip 업로드 + 페이지 카피, (d) root README "Get Pro" CTA의 "Coming soon" → 실제 Gumroad URL.
 
+**Phase 9 — Phase 8 main 반영 + Pro 태그 + 테스트 가이드 + npm 사전검증** (2026-06-19~20, PR #38~#43)
+- PR #38: 이 HANDOFF의 Phase 8 narrative.
+- PR #39: release sync (`develop` → `main`) — Phase 8 Pro 콘텐츠 전체를 main에 반영.
+- PR #40 `chore/pro-v0.1.0-changelog-cut`: `pro/CHANGELOG.md`를 v0.1.0으로 cut. **`pro-v0.1.0` 태그 생성 완료** (HANDOFF Pro 트랙 7번 태그 부분 ✓).
+- PR #42 `docs/test-guides`: `docs/test-guide-free.md` + `docs/test-guide-pro.md` (Free/Pro 수동 테스트 가이드).
+- PR #43 release sync (`develop` → `main`, 2026-06-20): test guides 반영. 이후 main back-merge로 **develop ↔ main 완전 정렬 (0/0)**.
+- **npm publish 직전 검증** (2026-06-20, `cd packages/cli && npm pack --dry-run`): **40 files invariant 유지**, pro/ 누출 0건, 경고/에러 0건, README.md(7.9kB)+LICENSE(1.1kB) 포함, `bin`/`repository`/`engines` 필드 정상, 엔트리포인트 스모크(`--version`/`list`) 정상. package size 26.7kB / unpacked 71.0kB. **publish 버튼만 남음** (Public 전환 + npm 2FA는 본인).
+
 **다음 액션** (Free + Pro 양쪽 ready; 남은 건 외부 액션 위주):
 
 ### A. Free 출시 트랙
@@ -134,7 +142,7 @@ README 폴리시 + Pro skeleton (PR #30~#31):
    - ⏸ Skip "Require approvals" (솔로) / "Require status checks" (CI 없음)
    - ℹ️ Linear history 켠 뒤 future develop→main PR은 **Rebase and merge** 또는 squash로 (일반 merge commit 차단됨).
 3. **npm publish 흐름**:
-   - 버전: `0.1.0-beta.3`, CHANGELOG `[0.1.0-beta.3]` 정리됨, lockfile sync됨, `npm pack --dry-run` clean (40 files, no warnings)
+   - 버전: `0.1.0-beta.3`, CHANGELOG `[0.1.0-beta.3]` 정리됨, lockfile sync됨. **2026-06-20 `npm pack --dry-run` 재검증 clean** (40 files, pro/ 0건, no warnings, README+LICENSE 포함)
    - npm 계정 + 2FA → `cd packages/cli && npm publish --tag beta`
    - publish 후 npm 페이지에서 README 이미지/링크 렌더링 확인 (`packages/cli/README.md`가 절대 GitHub URL 사용)
    - `npx ai-devseed init test-pkg --yes --no-git` 으로 published version 동작 확인
@@ -143,10 +151,10 @@ README 폴리시 + Pro skeleton (PR #30~#31):
 
 ### B. Pro 출시 트랙 (콘텐츠 + 패키징 완료)
 
-6. **develop → main release sync** — 현재 develop이 main보다 16 commits 앞섬 (Phase 8 전체). 전부 docs/Pro/scripts라 conflict 없고 npm tarball 영향 없음. Claude 단독 가능.
+6. ✅ **develop → main release sync** — 완료 (Phase 9, PR #39/#43). develop ↔ main 정렬 (0/0).
 7. **`pro-v0.1.0` tag + zip 빌드**:
-   - `git tag pro-v0.1.0 -m "Pro v0.1.0" && git push origin pro-v0.1.0`
-   - `bash scripts/build-pro-zip.sh` → `dist/ai-devseed-pro-v0.1.0.zip` (60K, 25 files, SHA256 출력)
+   - ✅ `pro-v0.1.0` 태그 생성/푸시 완료 (Phase 9, PR #40).
+   - ⬜ zip 빌드 남음: `bash scripts/build-pro-zip.sh` → `dist/ai-devseed-pro-v0.1.0.zip` (60K, 25 files, SHA256 출력)
 8. **Gumroad product 셋업** — 본인:
    - 제품 만들기, price `$19`
    - `ai-devseed-pro-v0.1.0.zip` 업로드
