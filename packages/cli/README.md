@@ -141,17 +141,6 @@ claude
 
 [**Get Pro →**](https://haemcheephox.gumroad.com/l/ai-devseed-pro)
 
-### 📖 The Full Story (Premium Guidebook - $39)
-**"From Idea to Launch: 60 Days of AI-Collaborative Solo Development"**
-
-The complete journey of building a real app with AI assistance:
-- Real decisions and their reasoning
-- What worked, what didn't
-- Mistakes and how to avoid them
-- Templates with context
-
-[**Coming Soon →**](#)
-
 ---
 
 ## 📚 Documentation
@@ -177,7 +166,7 @@ AI DevSeed was extracted from real solo development projects. See it in action:
 - [x] Core templates
 - [x] CLI tool
 - [x] Mobile (RN) + Web (React) templates
-- [ ] Pro tier launch
+- [x] Pro tier launch (v0.1.0 — 12 commands + 10 ADR scenarios)
 - [ ] Documentation site
 
 ### v0.2
@@ -216,7 +205,7 @@ This is a beta project! Feedback is incredibly valuable.
 
 MIT License - See [LICENSE](https://github.com/scappyJr/ai-devseed/blob/main/LICENSE) for details.
 
-The Free tier is fully open source. Pro tier templates are commercially licensed.
+The Free tier (CLI + templates) is MIT. The Pro tier is **source-visible** at [`pro/`](https://github.com/scappyJr/ai-devseed/tree/main/pro) in this repo under a [personal/team-use license](https://github.com/scappyJr/ai-devseed/blob/main/pro/LICENSE) — open-source-pricing model (curation + lifetime updates + sponsorship via Gumroad), not gating.
 
 ---
 
