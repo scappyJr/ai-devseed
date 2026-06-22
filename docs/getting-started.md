@@ -149,7 +149,7 @@ Absolutely. The Free tier templates are MIT licensed and yours to use.
 
 - 📖 [Workflow Guide](workflow.md) - Daily development rhythm
 - 🎨 [Customization](customization.md) - Adapt to your style
-- 💎 [Get Pro](#) - Unlock more templates and features
+- 💎 [Get Pro](https://haemcheephox.gumroad.com/l/ai-devseed-pro) - Unlock more templates and features
 
 ---
 

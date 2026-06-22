@@ -139,7 +139,7 @@ claude
 | 12 extended slash commands | ❌ | ✅ |
 | 10 ADR scenario templates | ❌ | ✅ |
 
-[**Get Pro →**](https://gumroad.com/ai-devseed-pro) *(Coming soon)*
+[**Get Pro →**](https://haemcheephox.gumroad.com/l/ai-devseed-pro)
 
 ### 📖 The Full Story (Premium Guidebook - $39)
 **"From Idea to Launch: 60 Days of AI-Collaborative Solo Development"**
@@ -227,7 +227,7 @@ A solo developer building real things with AI.
 If AI DevSeed helps you, consider:
 - ⭐ Starring this repo
 - 📣 Sharing on Reddit / Dev.to
-- 💝 Getting [Pro](https://gumroad.com/ai-devseed-pro) *(Coming soon)* to support development
+- 💝 Getting [Pro](https://haemcheephox.gumroad.com/l/ai-devseed-pro) to support development
 - ☕ [Buying me a coffee](https://ko-fi.com/scappyjr)
 
 ---
@@ -236,6 +236,6 @@ If AI DevSeed helps you, consider:
 
 **Made with 🌱 for the AI-collaborative future of solo development**
 
-[Pro](https://gumroad.com/ai-devseed-pro) *(Coming soon)*
+[Pro](https://haemcheephox.gumroad.com/l/ai-devseed-pro)
 
 </div>
