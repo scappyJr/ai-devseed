@@ -4,7 +4,7 @@
 
 ---
 
-## 🔄 다음 세션 시작하기 (Last sync: 2026-06-20)
+## 🔄 다음 세션 시작하기 (Last sync: 2026-06-22)
 
 ### 다른 환경에서 이어 작업하려면
 
@@ -134,6 +134,11 @@ README 폴리시 + Pro skeleton (PR #30~#31):
 - **draft GitHub Release 생성** (2026-06-20, `gh release create pro-v0.1.0 --draft`): title "AI DevSeed Pro v0.1.0", zip asset 첨부 (GitHub 자동 계산 digest = 위 SHA256 일치 검증됨), 본문 = 마케팅 카피 (Free 소개 + 12 commands + 10 ADR + install + open-source-pricing 설명 + SHA256 verify). **본문 링크가 `main` 기준** — 게시는 Public 전환 + (이미 완료된) main sync 후. 게시: `gh release edit pro-v0.1.0 --draft=false`.
 - PR #44 release sync (`develop` → `main`, 2026-06-20): Phase 9 HANDOFF + 스크립트 수정 + SHA256 (3 files). back-merge로 **develop ↔ main 정렬 (0/0)**.
 
+**Phase 10 — Gumroad publish + URL sync** (2026-06-22, PR `chore/pro-v0.1.0-launch-urls`)
+- **Pro v0.1.0 Gumroad 라이브**: `https://haemcheephox.gumroad.com/l/ai-devseed-pro` · $19 · `LAUNCH50` first-50-buyer $9 discount (Gumroad Checkout → Discounts, Fixed $10 off, max 50 uses, Set a minimum quantity 1). Auto-apply URL: `https://haemcheephox.gumroad.com/l/ai-devseed-pro/LAUNCH50` — Reddit/Disquiet 출시 글 전용 (README 정가 트래픽으로 50개 한도 보호).
+- **SHA256 정정**: Phase 9의 "build deterministic" 가정 무너짐. `pro/CHANGELOG.md`에 SHA256를 적는 순간 CHANGELOG 자체가 zip 콘텐츠라 hash가 무효화 = chicken-and-egg. Phase 10의 새 빌드 = Gumroad 업로드 zip hash = **`d28f294d5ab4da8d9bc486348425a37f74166a78beeb44eaa0f36ef0301337ad`**. `pro/CHANGELOG.md` + Gumroad description page는 새 값으로 정합. draft GitHub Release `pro-v0.1.0`의 notes 본문은 여전히 옛값(`5a1b8f4...`) — Public 전환 후 release 게시 시점에 본인이 `gh release edit pro-v0.1.0 --notes-file ...`로 정정 (별도 PR 불요).
+- **PR**: root README 3 spot + `packages/cli/README.md` 3 spot + `docs/getting-started.md` 1 spot의 "Coming soon" / placeholder URL → 실제 Gumroad URL. `pro/CHANGELOG.md` SHA256 갱신. Gumroad description은 `dist/gumroad-description.html` (gitignored, 브라우저 → Ctrl+A/C → Gumroad paste 방식 — WYSIWYG가 마크다운 미지원이라 HTML clipboard 사용).
+
 **다음 액션** (Free + Pro 양쪽 ready; 남은 건 외부 액션 위주):
 
 ### A. Free 출시 트랙
@@ -159,16 +164,12 @@ README 폴리시 + Pro skeleton (PR #30~#31):
 6. ✅ **develop → main release sync** — 완료 (Phase 9, PR #39/#43). develop ↔ main 정렬 (0/0).
 7. ✅ **`pro-v0.1.0` tag + zip 빌드 + draft release** — 모두 완료 (Phase 9):
    - `pro-v0.1.0` 태그 생성/푸시 (PR #40).
-   - `dist/ai-devseed-pro-v0.1.0.zip` 빌드 (60K, 25 files). SHA256 `5a1b8f413e06049cbc3ebc19605399d14f434b2fce74ef32334eff794b0c639c` (pro/CHANGELOG에 기록).
-   - **draft GitHub Release** 생성 (zip asset 첨부됨). ⬜ 게시만 남음 (Public 전환 후): `gh release edit pro-v0.1.0 --draft=false`. Gumroad URL 확보 시 본문 "buy on Gumroad" 한 줄 교체 권장.
-   - ⚠️ `dist/`는 gitignored — 다른 환경에서 release 게시하려면 `bash scripts/build-pro-zip.sh 0.1.0`으로 zip 재빌드 (deterministic, 같은 SHA256 재현). 단, 인자 `0.1.0` 명시 필요 (HEAD가 `pro-v0.1.0` 태그 커밋이 아니면 tag-driven 모드 실패).
-8. **Gumroad product 셋업** — 본인:
-   - 제품 만들기, price `$19`
-   - `ai-devseed-pro-v0.1.0.zip` 업로드
-   - 페이지 카피: `pro/README.md`의 "Why source-visible (Open-source pricing)" + Reference 섹션 사용
-   - First-50-buyer discount `$19→$9` 검토 (`docs/pro-tier-mvp-plan.md` § Open questions)
-9. **Root README "Get Pro" CTA → Gumroad URL** — Gumroad URL 확보 후 "Coming soon"을 실제 링크로 (root README 2 spot + 푸터 1 spot). Claude가 URL 받으면 PR 생성.
-10. **Pro 출시 announcement** — Free 출시와 동시 또는 직후. Reddit (r/SideProject, r/ClaudeAI), Dev.to. Claude draft 가능.
+   - `dist/ai-devseed-pro-v0.1.0.zip` 빌드 (60K, 25 files). SHA256 = Phase 10 narrative 참조 (chicken-and-egg로 빌드값 변경됨; 현재 정합값 `d28f294...`).
+   - **draft GitHub Release** 생성 (zip asset 첨부됨). ⬜ 게시만 남음 (Public 전환 후): `gh release edit pro-v0.1.0 --draft=false`. notes 본문의 SHA256 옛값(`5a1b8f4...`)도 같이 정정 권장.
+   - ⚠️ `dist/`는 gitignored — 다른 환경에서 release 게시하려면 `bash scripts/build-pro-zip.sh 0.1.0`으로 zip 재빌드. `pro/CHANGELOG.md`가 zip에 포함되므로 그 내용에 따라 hash가 달라짐 (Phase 9에서 deterministic 가정은 잘못이었음).
+8. ✅ **Gumroad product 셋업** — 완료 (Phase 10, 2026-06-22): `https://haemcheephox.gumroad.com/l/ai-devseed-pro` 라이브. $19 + LAUNCH50($10 off, max 50). 페이지 카피는 `dist/gumroad-description.html` 사용. KRW payout = 신한은행 (SWIFT `SHBKKRSEXXX`, 영문 명의 통장 필요).
+9. ✅ **Root README "Get Pro" CTA → Gumroad URL** — 완료 (Phase 10 PR). README 6 spot + getting-started 1 spot.
+10. **Pro 출시 announcement** — Free 출시와 동시 또는 직후. Reddit (r/SideProject, r/ClaudeAI), Dev.to. Claude draft 가능. LAUNCH50 자동 적용 URL (`.../ai-devseed-pro/LAUNCH50`) 우선 사용.
 
 ### 권장 순서
 
@@ -257,10 +258,10 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [ ] **Public 전환** (Settings → General → Change visibility)
 - [ ] Branch Protection 적용 (Public 후 무료)
 - [ ] npm 계정 + 2FA → `npm publish --tag beta`
-- [ ] develop → main release sync (16 commits, Pro 콘텐츠) — 어느 시점이든 가능
-- [ ] `git tag pro-v0.1.0` + `bash scripts/build-pro-zip.sh`
-- [ ] Gumroad product 셋업 + zip 업로드 + $19 가격
-- [ ] Root README "Get Pro" CTA → 실제 Gumroad URL
+- [x] develop → main release sync (Phase 9, PR #39/#43/#44)
+- [x] `git tag pro-v0.1.0` + `bash scripts/build-pro-zip.sh` (Phase 9, PR #40)
+- [x] Gumroad product 셋업 + zip 업로드 + $19 가격 (Phase 10, 2026-06-22)
+- [x] Root README "Get Pro" CTA → 실제 Gumroad URL (Phase 10 PR)
 - [ ] Reddit/Disquiet 출시 글 (Free + Pro)
 - [ ] 첫 사용자 피드백 받기
 
