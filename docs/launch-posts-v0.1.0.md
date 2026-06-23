@@ -6,6 +6,12 @@ Final draft of launch posts for the **simultaneous Free (`npx ai-devseed init`) 
 
 > **Use your own voice.** Don't copy-paste verbatim. Authenticity > polish on these platforms. Each post below is a starting structure, not a script.
 
+> ⚠️ **Reddit-specific gotchas (learned the hard way on r/SideProject)**:
+>
+> 1. **Switch to Markdown Mode** before pasting. New Reddit's default editor is Rich Text — pasted markdown becomes plain text and headings/lists/bold all flatten into one paragraph. Look for the "Switch to Markdown" toggle (usually bottom-left of the editor) before you paste.
+> 2. **Avoid fenced code blocks** (` ``` `). Reddit's markdown parser does **not** reliably handle them — the closing fence often gets missed and everything below it renders as one giant monospace block. Use **inline backticks** (`` ` ``) for short commands, or **4-space indentation** for multi-line code. The post bodies below already follow this rule.
+> 3. **Edit "Markdown Mode" is sticky** per post — once you switch on a post, stays on for that post's future edits. Set it on first paste.
+
 ---
 
 ## ✅ Pre-flight (before posting anywhere)
@@ -44,9 +50,7 @@ CLAUDE.md, ADR templates, daily journal folder, GitHub labels, slash commands.
 
 So I extracted it into a CLI:
 
-```bash
-npx ai-devseed init my-app
-```
+`npx ai-devseed init my-app`
 
 In ~30 seconds you get:
 - CLAUDE.md (auto-loaded by Claude Code)
@@ -101,9 +105,7 @@ Long-time Claude Code user here. Sharing the project-level conventions
 I converged on after a ~60-day solo build, packaged so you can install
 them in 30 seconds.
 
-```bash
-npx ai-devseed init my-app
-```
+`npx ai-devseed init my-app`
 
 **What it sets up for Claude Code specifically:**
 
@@ -155,9 +157,7 @@ v0.1.0 release of a CLI tool I've been working on solo.
 Generates CLAUDE.md, ADR system, journal, slash commands, GitHub labels —
 the workflow scaffolding, not the code.
 
-```bash
-npx ai-devseed init my-app
-```
+`npx ai-devseed init my-app`
 
 **License model** (might be of interest here):
 
@@ -206,9 +206,7 @@ Claude Code로 사이드 프로젝트들을 만들면서 매번 같은 셋업(CL
 ADR 폴더, 슬래시 명령, GitHub 라벨...)을 반복하고 있다는 걸 깨닫고
 CLI 도구로 추출했어요. 베타 끝나고 v0.1.0 정식 출시했습니다.
 
-```bash
-npx ai-devseed init my-app
-```
+`npx ai-devseed init my-app`
 
 **30초 안에 셋업되는 것:**
 
