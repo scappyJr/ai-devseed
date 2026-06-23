@@ -73,4 +73,29 @@ if (process.argv.length === 2) {
   program.help();
 }
 
+// Commander treats a leading-hyphen positional (e.g. `init -foo`) as an
+// unknown flag and bails before our project-name validator runs, leaving the
+// user with an unhelpful "unknown option" message. Catch that one case here.
+const argv = process.argv.slice(2);
+const initIdx = argv.indexOf('init');
+if (initIdx !== -1) {
+  const knownInitFlags = new Set([
+    '-t', '--template',
+    '-y', '--yes',
+    '--no-git',
+    '-h', '--help',
+  ]);
+  const next = argv[initIdx + 1];
+  if (next && next.startsWith('-') && !knownInitFlags.has(next)) {
+    console.log(banner);
+    console.error(
+      chalk.red('\n❌ Error:'),
+      `Invalid project name "${next}". Project names cannot start with "-".`
+    );
+    console.error(chalk.gray('   Use lowercase letters, numbers, hyphens, or underscores.'));
+    console.error(chalk.gray('   Must start with a letter or number.'));
+    process.exit(1);
+  }
+}
+
 program.parse(process.argv);

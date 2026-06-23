@@ -12,6 +12,13 @@ All notable changes to AI DevSeed.
 
 ---
 
+## [0.1.0-beta.4] · 2026-06-23
+
+### Fixed
+- `init` with a leading-hyphen project name (e.g. `npx ai-devseed init -my-app`) now produces a clear, validator-shaped error instead of Commander's generic "unknown option" message. Commander parses `-foo` as an unknown flag before the action runs, so a pre-parse argv check in `bin/ai-devseed.js` intercepts this specific case and emits the same "use lowercase letters, numbers, hyphens, or underscores; must start with a letter or number" guidance the regular validator uses. Known `init` flags (`-t`/`--template`, `-y`/`--yes`, `--no-git`, `-h`/`--help`) still parse normally. Caught during pre-launch testing; surfaced on launch day in the r/SideProject post's "rough edges" list.
+
+---
+
 ## [0.1.0-beta.3] · 2026-06-11
 
 ### Added
