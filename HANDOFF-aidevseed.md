@@ -4,7 +4,7 @@
 
 ---
 
-## 🔄 다음 세션 시작하기 (Last sync: 2026-06-22)
+## 🔄 다음 세션 시작하기 (Last sync: 2026-06-23)
 
 ### 다른 환경에서 이어 작업하려면
 
@@ -139,7 +139,20 @@ README 폴리시 + Pro skeleton (PR #30~#31):
 - **SHA256 정정**: Phase 9의 "build deterministic" 가정 무너짐. `pro/CHANGELOG.md`에 SHA256를 적는 순간 CHANGELOG 자체가 zip 콘텐츠라 hash가 무효화 = chicken-and-egg. Phase 10의 새 빌드 = Gumroad 업로드 zip hash = **`d28f294d5ab4da8d9bc486348425a37f74166a78beeb44eaa0f36ef0301337ad`**. `pro/CHANGELOG.md` + Gumroad description page는 새 값으로 정합. draft GitHub Release `pro-v0.1.0`의 notes 본문은 여전히 옛값(`5a1b8f4...`) — Public 전환 후 release 게시 시점에 본인이 `gh release edit pro-v0.1.0 --notes-file ...`로 정정 (별도 PR 불요).
 - **PR**: root README 3 spot + `packages/cli/README.md` 3 spot + `docs/getting-started.md` 1 spot의 "Coming soon" / placeholder URL → 실제 Gumroad URL. `pro/CHANGELOG.md` SHA256 갱신. Gumroad description은 `dist/gumroad-description.html` (gitignored, 브라우저 → Ctrl+A/C → Gumroad paste 방식 — WYSIWYG가 마크다운 미지원이라 HTML clipboard 사용).
 
-**다음 액션** (Free + Pro 양쪽 ready; 남은 건 외부 액션 위주):
+**Phase 11 — v0.1.0-beta launch day** (2026-06-23, PR #46 release sync + #47 README trim + #48 launch posts + 본 PR `chore/launch-posts-markdown-fix`)
+
+- **npm publish 완료**: `ai-devseed@0.1.0-beta.3` 라이브 (`https://www.npmjs.com/package/ai-devseed`). `npx ai-devseed@beta init test-pkg --yes --no-git` cold install 검증 통과 (28 files). Tarball SHA `97f1112...`, 26.3 kB packed / 71.9 kB unpacked, 40 files invariant.
+  - ⚠️ **첫 publish는 `--tag beta`를 줘도 npm이 `latest`도 자동 부여** → dist-tags `latest=beta=0.1.0-beta.3`. `npm install ai-devseed` (태그 없음)도 베타를 잡음. 출시 단계 의도와 align이지만 **stable 0.1.0 cut 시 latest 재할당** 필요. 영구 메모.
+  - ⚠️ **npm package metadata의 maintainer email은 publish 시점에 stamp** → `0.1.0-beta.3`은 옛 email (`haemcheepho@gmail.com`) 영구. npm profile email 바꿔도 이미 published된 metadata에 반영 안 됨. 다음 patch publish부터 새 email.
+- **GitHub Release `pro-v0.1.0` 게시**: Public + zip asset 첨부. **zip asset 정정 1회 필요했음** — Phase 9 draft 시점 첨부 zip이 Phase 9 빌드본(`5a1b8f4...`, 60,138 bytes)이었고 publish 후 다운로드 검증으로 발견 (`curl + sha256sum`). Phase 10 새 빌드본(`d28f294...`, 60,217 bytes)으로 본인이 GitHub UI에서 교체 → 재검증 통과. **SHA256 정합 6 surface 동기**: GitHub Release zip + Gumroad zip + 로컬 dist/ + Release notes 본문 + pro/CHANGELOG.md + Gumroad description.
+- **Gumroad page 라이브**: `https://haemcheephox.gumroad.com/l/ai-devseed-pro`. $19 + `LAUNCH50` first-50-buyer $9 discount. KRW payout 신한은행 등록 완료 (SWIFT `SHBKKRSEXXX`, 영문 명의).
+- **r/SideProject 첫 글 게시**: `https://www.reddit.com/r/SideProject/comments/1ud4k6s/`. 본문 마크다운 렌더링 이슈 **2회 fix** 필요:
+  1. **첫 게시**: Reddit 새 에디터 기본 = Rich Text → 마크다운 문법이 plain text로 들어가서 본문이 한 단락으로 압축 (헤딩/리스트/볼드 다 사라짐). Edit → 편집기 하단 **"Switch to Markdown"** 토글로 fix.
+  2. **Markdown Mode 활성화 후**: ` ```bash ` fenced code block의 닫는 ` ``` `를 Reddit 파서가 인식 못 함 → 본문 후반 절반이 거대한 monospace 박스로 흘러감 (볼드/링크/리스트 다 plain). 명령어를 **인라인 백틱** (`` ` ``)으로 교체 fix.
+  - **교훈**: Reddit Markdown은 fenced code block 미보장. **명령어는 인라인 백틱 또는 4-space indent만** 사용. 이 PR이 `docs/launch-posts-v0.1.0.md`의 4 채널 (r/SideProject/r/ClaudeAI/r/opensource/Disquiet) 본문에서 ` ```bash ` 블록을 일괄 인라인화 + 상단에 "Reddit-specific gotchas" 경고 박스 추가 → 다음 채널 포스팅 안전 확보.
+- **Reddit 계정 username 불일치 발견**: GitHub `scappyJr` ↔ npm `haemcheepho` ↔ Gumroad `haemcheephox` ↔ Reddit `haemcheepho`. 본인 정체성 연결은 본문 GitHub 링크로 가능하나 future multi-account 관리 부담. 출시 후 정리 사안.
+
+**다음 액션** (외부 — 본인 진행, 또는 Claude 보조):
 
 ### A. Free 출시 트랙
 
@@ -255,9 +268,9 @@ Otori 셋업 과정에서 만들어진 다음 패턴들이 일반화 가능하�
 - [x] Pro MVP plan 작성 + open-source pricing 결정 (PR #26~#28)
 - [x] Pro 콘텐츠 22 markdown 빌드 (PR #31~#36 — skeleton + 12 commands + 10 ADR scenarios)
 - [x] Pro 패키징 (Pro README finalize + `scripts/build-pro-zip.sh` + root `.gitattributes`; PR #37)
-- [ ] **Public 전환** (Settings → General → Change visibility)
-- [ ] Branch Protection 적용 (Public 후 무료)
-- [ ] npm 계정 + 2FA → `npm publish --tag beta`
+- [x] **Public 전환** (Phase 11, 2026-06-23)
+- [x] Branch Protection 적용 (Phase 11)
+- [x] npm 계정 + 2FA → `npm publish --tag beta` (Phase 11, `ai-devseed@0.1.0-beta.3`)
 - [x] develop → main release sync (Phase 9, PR #39/#43/#44)
 - [x] `git tag pro-v0.1.0` + `bash scripts/build-pro-zip.sh` (Phase 9, PR #40)
 - [x] Gumroad product 셋업 + zip 업로드 + $19 가격 (Phase 10, 2026-06-22)
